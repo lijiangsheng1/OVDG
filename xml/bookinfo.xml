@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bookinfo>
+&pubinfo;
+<revhistory>
+<revision>
+<revnumber>0.0</revnumber>
+<date>2012-06-17</date>
+<revdescription>
+<itemizedlist>
+<listitem><para>原始发布</para></listitem>
+</itemizedlist>
+</revdescription>
+</revision>
+</revhistory>
+<legalnotice>
+<para>Permission is granted to copy, distribute, and/or modify this document under the terms of the <acronym>GNU</acronym> Free Documentation License, Version 1.1 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in <link linkend="gfdl">Appendix G, GNU Free Documentation License</link>.</para>
+<para>允许在 GNU 自由文档协议 (1.1 版，或自由软件基金会出版的任何更新版本) 的许可下复制、发行且/或修改本文档；本文档没有不变部分，没有前封面文本，没有封底文本。该协议的一份中文版参考译文包含在 <xref linkend="gfdl_zh"/> 中。
+</para>
+<para>在这本书中的例程是自由软件。你可以在遵守 &python; 协议 (&python; 软件基金会发布) 条款的规定下，重新发布，且/或修改它们。在 <xref linkend="license"/> 中包含了此协议的一份拷贝。</para>
+<para>本译文遵守 GFDL 的规定。你可以复制、发行、修改此文档，但请保留此版权信息。</para>
+</legalnotice>
+<!--
+A brief word about the licensing of this book.  This is a free (as in speech)
+book.  If you've heard of free software, this is the same idea, only with a book
+instead of a computer program.  You now own this book, and while
+you can't just do anything you want with it, you have an enormous amount of freedom,
+much more than you would ordinarily expect to get with a book.
+
+You can, for instance, make any number of copies of this book.  Give it to your friends,
+post it on your own web site, publish it in new media formats.  You can even
+add chapters to the book and republish it under a new title without my
+consent or even my awareness.  My work is always copyright to me, and your work is
+always copyright to you, and your new-and-presumably-improved version must be published
+under the same license as this one.  There are a few other obscure details that you
+can read all about in the appendix, but that's the basic idea.
+
+There are already several excellent Python books that have gone out of print,
+because their publishers decided that it was not in their best interest to continue
+publishing them.  That never has to happen to free books.  You have the freedom to keep
+this book alive.  If I choose to stop distributing it, you can distribute it yourself.
+If I move on and this book goes out of date, you can pick up where I left off and keep
+this book current and relevant.
+
+As I write this, the year is 2000, and the Internet is a battleground of intellectual
+property disputes.  Some people would like you to believe that, without proper financial
+incentives, music, literature, and computer software would disappear.  After all,
+who would make music if they can't make money on it?  Who would write?  Who would
+program?  I know the answer.  The answer is that musicians will make music, not because
+they can make money, but because musicians are the people who can't not make music.
+Writers will write because they can't not write.  I've been programming for 16 years,
+writing free software for 8.  I can't imagine not doing this.  If you can imagine yourself
+not doing what you're doing, do something else.  Do whatever it is that you can't not do.
+-->
+</bookinfo>

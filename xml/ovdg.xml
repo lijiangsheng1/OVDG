@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"../../common/docbook/dtd/docbookx.dtd"
+[
+<!ENTITY % entities SYSTEM "entities.xml">
+%entities;
+<!ENTITY bookinfo SYSTEM "bookinfo.xml">
+]>
+<book>
+<title>&title;</title>
+&bookinfo;
+&appendix;
+</book>
