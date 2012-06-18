@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
-"../../common/docbook/dtd/docbookx.dtd"
-[
-<!ENTITY bookinfo SYSTEM "bookinfo.xml">
-%bookinfo;
-<!ENTITY chap1 SYSTEM "guide.xml">
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "../../docbook/dtd/docbook.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "ovdg.ent">
+%BOOK_ENTITIES;
 ]>
 <book>
-<title>开源虚拟化开发指南</title>
+ <xi:include href="BookInfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="guide.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </book>

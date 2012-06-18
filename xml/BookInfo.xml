@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "../../docbook/dtd/docbook.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "ovdg.ent">
+%BOOK_ENTITIES;
+]>
+<bookinfo>
+  <title>开源虚拟化开发指南</title>
+  <subtitle>0</subtitle>
+  <edition>0</edition>
+</bookinfo>

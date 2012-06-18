@@ -95,14 +95,14 @@ echo "  Generating FO file:  $doc_base.fo"
 $XSLTPROC --stringparam draft.mode $draft \
           --stringparam toc.section.depth "2" \
           --stringparam chunk.section.depth "4" \
-          --stringparam l10n.gentext.language "zh-CN" \
+          --stringparam l10n.gentext.language "zh_cn" \
           --stringparam show.comments 1 \
           --stringparam generate.section.toc.level "3" \
           --stringparam fop1.extensions "1" \
-          --stringparam body.font.family "wqy-microhei" \
-          --stringparam dingbat.font.family "wqy-microhei" \
-          --stringparam title.font.family "wqy-microhei" \
-          --stringparam symbol.font.family "wqy-microhei" \
+          --stringparam body.font.family "WenQuanYiMicroHeiLight" \
+          --stringparam dingbat.font.family "WenQuanYiMicroHeiLight" \
+          --stringparam title.font.family "WenQuanYiMicroHeiLight" \
+          --stringparam symbol.font.family "WenQuanYiMicroHeiLight" \
           --xinclude -o  $doc_base".fo" \
           $notoc \
           $driverfile \
