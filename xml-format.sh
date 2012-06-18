@@ -99,10 +99,6 @@ $XSLTPROC --stringparam draft.mode $draft \
           --stringparam show.comments 1 \
           --stringparam generate.section.toc.level "3" \
           --stringparam fop1.extensions "1" \
-          --stringparam body.font.family "WenQuanYiMicroHeiLight" \
-          --stringparam dingbat.font.family "WenQuanYiMicroHeiLight" \
-          --stringparam title.font.family "WenQuanYiMicroHeiLight" \
-          --stringparam symbol.font.family "WenQuanYiMicroHeiLight" \
           --xinclude -o  $doc_base".fo" \
           $notoc \
           $driverfile \
