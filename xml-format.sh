@@ -27,10 +27,7 @@ if [ $# == 0 ] ; then
 	exit 
 fi
 
-#driverfile="/usr/share/publican/xsl/redflag/pdf.xsl"
-driverfile="../docbook-xsl-1.75.1/fo/docbook.xsl"
-#driverfile="$dir/../external/docbook-xsl-1.74.3/fo/docbook.xsl"
-# driverfile="$dir/../XSL/generic-print-driver.xsl"
+driverfile="../docbook-xsl/fo/docbook.xsl"
 draft="no"
 keepgoing="no"
 RTFoutput="no"
@@ -130,7 +127,7 @@ mv $$ $doc_base".fo"
 
 if [ x$RTFoutput = "xno" ] ; then
     echo "  Generating PDF file: $doc_base"".pdf"
-	fop -q -c /usr/share/publican/fop/fop.xconf -fo $doc_base".fo" -pdf $doc_base".pdf" 1> fop.out 2> fop.out
+	fop -q -c ../fop/conf/fop.xconf -fo $doc_base".fo" -pdf $doc_base".pdf" 1> fop.out 2> fop.out
 else
     echo "  Generating RTF file: $doc_base"".rtf"
 	fop -fo $doc_base".fo" -rtf $doc_base".rtf" 1> fop.out 2> fop.out

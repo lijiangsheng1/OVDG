@@ -2,12 +2,10 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
 "../../common/docbook/dtd/docbookx.dtd"
 [
-<!ENTITY % entities SYSTEM "entities.xml">
-%entities;
 <!ENTITY bookinfo SYSTEM "bookinfo.xml">
+%bookinfo;
+<!ENTITY chap1 SYSTEM "guide.xml">
 ]>
 <book>
-<title>&title;</title>
-&bookinfo;
-&appendix;
+<title>开源虚拟化开发指南</title>
 </book>
