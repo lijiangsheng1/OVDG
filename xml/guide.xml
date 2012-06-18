@@ -1,0 +1,10 @@
+<chapter>
+ <title>My Chapter</title>
+  <para> ... </para>
+   <sect1>
+    <title>First Section</title>
+     <para> ... </para>
+     <example> ... </example>
+   </sect1>
+</chapter>
+
