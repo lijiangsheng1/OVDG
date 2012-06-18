@@ -26,10 +26,12 @@
      <para>基于linux内核的虚拟化技术:KVM -- krenel virtual machine.</para>
      <para>硬件虚拟化的模拟器:Qemu</para>
      <para>基于多种Hypervisor统一接口的程序开发库：libvirt</para>
+     <para>埋伏在主机上的“间谍": Hostagent介绍</para>
      <para>网络虚拟化的未来：OpenVSwitch,基于openflow的下一代网络技术</para>
      <para>存储虚拟化：带外的天下,libstoragemgmt</para>
      <para>访问虚拟化：Spice,不只是诱人的小辣椒.</para>
      <para>安全和资源限制:sVirt和CGroup</para>
+     <para>管理：将一切牢牢的控制着某中心节点, Ovirt</para>
      <para>OpenStack:IaaS平台的翘楚，Python能吃得消吗？</para>
    </sect4>
 </chapter>
