@@ -7,4 +7,22 @@
   <title>开源虚拟化开发指南</title>
   <subtitle>0</subtitle>
   <edition>0</edition>
+  <authorgroup>
+   <author>
+     <personname>
+        <firstname></firstname>
+     </personname>
+     <affiliation>
+     </affiliation>
+   </author>
+   <editor>
+     <personname>
+        <firstname>适兕</firstname>
+        <othername></othername>
+     </personname>
+     <personblurb>
+       <para>独立之思想，自由之精神。 -- 陈寅恪</para>
+     </personblurb>
+   </editor>
+  </authorgroup>
 </bookinfo>
