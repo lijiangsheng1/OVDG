@@ -1,0 +1,21 @@
+<chapter>
+ <title>Ovirt or No virt</title>
+  <para>虚拟数据中心管理平台</para>
+   <sect1>
+    <title>历史背景</title>
+     <para>远在2008年的时候，Ovirt以Ruby on Rails的形式初出茅庐，在Redhat收购以色列公司后，此项目停止开发，但是此公司原来的虚拟化管理平台是基于windows C#程序语言开发的，即市场上出现的RHEV2.2产品系列，RedHat是一家以开源著称的公司，并且除经营企业级Linux服务器发行版之外，还是著名中间件JBoss的厂商版权所有者，于是进行了为期一年的C#向Java的迁移之旅，在2011年11月1日，国人称之为“光棍节”的日子里发布了Ovirt3.0 OpenSource所有代码，融合了Redhat的系列产品有:RHEL，JBoss,PostGresql,IPA等一系列产品，当然，按照RedHat的模式，其商业产品一定有一个开发的社区支撑：Fedora,JBoss,postgresql,Free IPA等</para>
+   </sect1>
+   <sect2>
+     <title>开发所需要的预备知识</title>
+     <para> ... </para>
+   </sect2>
+   <sect3>
+     <title>谈谈架构，以及数据流原理</title>
+     <para> ... </para>
+   </sect3>
+   <sect4>
+     <title>开发实例</title>
+     <para> ... </para>
+   </sect4>
+</chapter>
+
