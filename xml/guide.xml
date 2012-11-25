@@ -7,7 +7,82 @@
    <section>
     <title>谈谈云计算</title>
      <para>按照技术的排名网站,云计算已经是过去式了，那么一个被过于炒作的概念，一旦消停下去之后，那么有两种结果，一种是它已经深入到人们的观念中，甚至溶入到人们的日常生活中；另外一种那就是真的过去了，根本就没有给人们留下什么印象。显然，云计算属于前者。</para>
-     <para></para>
+     <table xml:id="tech_trend_table" frame="all">
+     <title>来自gartner的三年技术趋势比较</title>
+       <tgroup cols='3' align='left' colsep='1' rowsep='1'>
+          <thead>
+            <row>
+              <entry>2010</entry>
+              <entry>2011</entry>
+              <entry>2012</entry>
+              <entry>2013</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+             <entry>Cloud Computing</entry>
+             <entry>Cloud Computing</entry>
+             <entry>Media Tablets and Beyond</entry>
+             <entry>Mobile Device Battles</entry>
+            </row>
+            <row>
+             <entry>Advanced Analytics</entry>
+             <entry>Mobile Applications and Media Tablets</entry>
+             <entry>Mobile-Centric Applications and Interfaces</entry>
+             <entry>Moble Applications and HTML5</entry>
+            </row>
+            <row>
+             <entry>Client Computing</entry>
+             <entry>Social Communications and Collaboration</entry>
+             <entry>Contextual and Social User Experience</entry>
+             <entry>Personal cloud</entry>
+            </row>
+            <row>
+             <entry>IT for Green</entry>
+             <entry>Video</entry>
+             <entry>Internet of Things</entry>
+             <entry>Enterprise App store</entry>
+            </row>
+            <row>
+             <entry>Reshaping the Data Center</entry>
+             <entry>Next Generation Analytics</entry>
+             <entry>App Stores and Marketplaces</entry>
+             <entry>The Internet of Things</entry>
+            </row>
+            <row>
+             <entry>Social Computing</entry>
+             <entry>Social Analytics</entry>
+             <entry>Next-Generation Analytics</entry>
+             <entry>Hybrid IT and cloud computing</entry>
+            </row>
+            <row>
+             <entry>Security – Activity Monitoring</entry>
+             <entry>Context-Aware Computing</entry>
+             <entry>Big Data</entry>
+             <entry>Strategic Big Data</entry>
+            </row>
+            <row>
+             <entry>Flash Memory</entry>
+             <entry>Storage Class Memory</entry>
+             <entry>In-Memory Computing</entry>
+             <entry>Actionable Analytics</entry>
+            </row>
+            <row>
+             <entry>Virtualization for Availability</entry>
+             <entry>Ubiquitous Computing</entry>
+             <entry>Extreme Low-Energy Servers</entry>
+             <entry>In Memory Computing</entry>
+            </row>
+            <row>
+             <entry>Mobile Applications</entry>
+             <entry>Fabric-Based Infrastructure and Computers</entry>
+             <entry>Cloud Computing</entry>
+             <entry>Integrated Ecosystems</entry>
+            </row>
+          </tbody>
+       </tgroup>
+     </table>
+     <para>以上内容来自：http://www.gartner.com/it/products/newsroom/index.jsp</para>
    </section>
    <section>
      <title>IaaS</title>
