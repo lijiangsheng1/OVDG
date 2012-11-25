@@ -4,23 +4,29 @@
   <para>申明：旨在引导，让一个开发者有个好的入门，不谈高深，也不谈系统管理。</para>
   <para>其实也就是想将自己平时思考、平时遇到的问题记录下来，系统的写下来，整理成系统性的知识分布，何乐而不为？</para>
   <para></para>
-   <sect1>
+   <section>
     <title>谈谈云计算</title>
-     <para> ... </para>
-   </sect1>
-   <sect2>
+     <para>按照技术的排名网站,云计算已经是过去式了，那么一个被过于炒作的概念，一旦消停下去之后，那么有两种结果，一种是它已经深入到人们的观念中，甚至溶入到人们的日常生活中；另外一种那就是真的过去了，根本就没有给人们留下什么印象。显然，云计算属于前者。</para>
+     <para></para>
+   </section>
+   <section>
      <title>IaaS</title>
-     <para> ... </para>
-   </sect2>
-   <sect3>
+       <subtitle>基础设施即服务，XaaS的一种.</subtitle>
+     <para> </para>
+   </section>
+   <section>
      <title>虚拟化</title>
-     <para> ... </para>
-   </sect3>
-   <sect4>
+     <section>
+       <title>为什么要虚拟化？</title>
+       <para>这个问题的回答，要分开两种方式来回答，</para>
+     </section>
+     <para> </para>
+   </section>
+   <section>
      <title>开源在上述中所起的作用</title>
      <para> ... </para>
-   </sect4>
-   <sect4>
+   </section>
+   <section>
      <title>开源中的具体实现</title>
      <para> 这是本书的重点内容，我们以社区参与开发者的角色，将系统“纵深”的剖析，以各个具体实现为引子，然后进入“别有洞天”的境界，就看有心人了。</para>
      <para>基于linux内核的虚拟化技术:KVM -- krenel virtual machine.</para>
@@ -33,6 +39,6 @@
      <para>安全和资源限制:sVirt和CGroup</para>
      <para>管理：将一切牢牢的控制着某中心节点, Ovirt</para>
      <para>OpenStack:IaaS平台的翘楚，Python能吃得消吗？</para>
-   </sect4>
+   </section>
 </chapter>
 
