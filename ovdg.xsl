@@ -6,7 +6,7 @@
                 xmlns:db="http://docbook.org/ns/docbook"
                 exclude-result-prefixes="db ng exsl"
                 version='1.0'>
-<xsl:import href="../docbook-xsl/fo/docbook.xsl"/>
+<xsl:import href="/home/lee/Docbook/docbook/fo/docbook.xsl"/>
 
 <xsl:attribute-set name="section.title.properties">
   <xsl:attribute name="font-family">
@@ -21,12 +21,12 @@
   <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
 </xsl:attribute-set>
  
-<xsl:param name="body.font.family">WenQuanYiMicroHeiLight</xsl:param>
-<xsl:param name="monospace.font.family">WenQuanYiMicroHeiLight</xsl:param>
-<xsl:param name="title.font.family">WenQuanYiMicroHeiLight</xsl:param>
-<xsl:param name="dingbat.font.family">WenQuanYiMicroHeiLight</xsl:param>
-<xsl:param name="symbol.font.family">WenQuanYiMicroHeiLight</xsl:param>
-<xsl:param name="sans.font.family">WenQuanYiMicroHeiLight</xsl:param>
+<xsl:param name="body.font.family">wqy-microhei</xsl:param>
+<xsl:param name="monospace.font.family">wqy-microhei</xsl:param>
+<xsl:param name="title.font.family">wqy-microhei</xsl:param>
+<xsl:param name="dingbat.font.family">wqy-microhei</xsl:param>
+<xsl:param name="symbol.font.family">wqy-microhei</xsl:param>
+<xsl:param name="sans.font.family">wqy-microhei</xsl:param>
 
 
 </xsl:stylesheet>

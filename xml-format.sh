@@ -6,6 +6,20 @@
 #
 # wvh@vonhagen.org
 #
+#check docbook xsl depandcy.
+#if  [ ! -d ../docbook-code ] ; then
+#      echo "Can't find docbook submodule in this repo.checkout from sourcefoger.net"
+#      svn checkout http://svn.code.sf.net/p/docbook/code/trunk ../docbook-code
+#fi
+
+#check fop package in this directory.
+#if [ ! -d ../fop ] ; then
+#      echo "Can't find apache fop submodule in this repo.checkout from apache.org"
+#      echo "plase wait......"
+#      svn checkout http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk/ ../fop
+#fi
+
+#echo "Now, you need compil the project."
 
 function usage {
 	echo "Usage: $0 [OPTIONS] document-name"
@@ -27,7 +41,7 @@ if [ $# == 0 ] ; then
 	exit 
 fi
 
-driverfile="../docbook-xsl/fo/docbook.xsl"
+driverfile="$HOME/Docbook/docbook/fo/docbook.xsl"
 draft="no"
 keepgoing="no"
 RTFoutput="no"
@@ -123,10 +137,10 @@ mv $$ $doc_base".fo"
 
 if [ x$RTFoutput = "xno" ] ; then
     echo "  Generating PDF file: $doc_base"".pdf"
-	fop -q -c ../fop/conf/fop.xconf -fo $doc_base".fo" -pdf $doc_base".pdf" 1> fop.out 2> fop.out
+	$HOME/Docbook/fop/fop -c $HOME/Docbook/fop/conf/fop.xconf -q -fo $doc_base".fo" -pdf $doc_base".pdf" 1> fop.out 2> fop.out
 else
     echo "  Generating RTF file: $doc_base"".rtf"
-	fop -fo $doc_base".fo" -rtf $doc_base".rtf" 1> fop.out 2> fop.out
+	$HOME/Docbook/fop/fop -fo $doc_base".fo" -rtf $doc_base".rtf" 1> fop.out 2> fop.out
 fi
 
 probs=`grep -i Exception fop.out | wc -l | sed -e 's; ;;g'`
