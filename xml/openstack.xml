@@ -1,20 +1,20 @@
 <chapter>
- <title>OpenStack</title>
-  <para></para>
+ <title>OpenStack:delivers a massively scalable cloud operating system</title>
+  <para>随着OpenStack社区成功的运营，虽然未见到其在特性，性能等有相比其他同类开源产品有任何的优势，但是他火了，刚刚结束的每半年一次的OpenStack Summit HongKong,无论从赞助商、演讲者、参展商的规模，还是新版Havana的发布所提交的代码贡献者/企业，都可看出OpenStack的普及率，未来一片大好。</para>
    <sect1>
-    <title>历史背景</title>
+    <title>什么是OpenStack</title>
      <para></para>
    </sect1>
    <sect2>
-     <title>开发所需要的预备知识</title>
+     <title>历史背景</title>
      <para> ... </para>
    </sect2>
    <sect3>
-     <title>谈谈架构，以及数据流原理</title>
+     <title>谈</title>
      <para> ... </para>
    </sect3>
    <sect4>
-     <title>开发实例</title>
+     <title></title>
      <para> ... </para>
    </sect4>
 </chapter>
