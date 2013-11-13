@@ -2,20 +2,78 @@
  <title>OpenStack:delivers a massively scalable cloud operating system</title>
   <para>随着OpenStack社区成功的运营，虽然未见到其在特性，性能等有相比其他同类开源产品有任何的优势，但是他火了，刚刚结束的每半年一次的OpenStack Summit HongKong,无论从赞助商、演讲者、参展商的规模，还是新版Havana的发布所提交的代码贡献者/企业，都可看出OpenStack的普及率，未来一片大好。</para>
    <sect1>
-    <title>什么是OpenStack</title>
-     <para></para>
+    <title>什么是OpenStack?</title>
+     <para>OpenStack是致力于一个提供私有/公有云的开源平台，OpenStack的目的是为各种类型的云提供容易实现的、横向扩展的、功能丰富的解决方案。</para>
    </sect1>
    <sect2>
      <title>历史背景</title>
-     <para> ... </para>
+     <para> 在2010年由Rackspace和NASA发起，现在由OpenStack基金会主持，已经发展为一个全球的开发社区，甚至是一个生态链。</para>
    </sect2>
-   <sect3>
-     <title>谈</title>
-     <para> ... </para>
-   </sect3>
-   <sect4>
-     <title></title>
-     <para> ... </para>
-   </sect4>
+   <sect1>
+     <title>OpenStack子项目</title>
+      <itemizedlist mark='opencircle'>
+        <listitem>
+         <para>Nova
+         </para>
+        </listitem>
+        <listitem>
+         <para>Glance
+         </para>
+        </listitem>
+        <listitem >
+         <para>Swift
+         </para>
+        </listitem>
+        <listitem>
+         <para>Cinder
+          </para>
+        </listitem>
+        <listitem>
+         <para>Neutron
+          </para>
+        </listitem>
+        <listitem>
+         <para>Keystone
+          </para>
+        </listitem>
+        <listitem>
+         <para>Horizon
+          </para>
+        </listitem>
+        <listitem>
+         <para>Ceilometer
+          </para>
+        </listitem>
+        <listitem>
+         <para>Rally
+          </para>
+        </listitem>
+      </itemizedlist>
+     <para>还有一些仍然在孵化中的项目，如：melange，staccato，更多信息请参考：<ulink url="https://launchpad.net/openstack">launchpad上openstack主页。</ulink></para>
+   </sect1>
+   <sect1>
+     <title>架构及数据流向</title>
+     <para> 这个可能是作为一个从业software多年的每一个人的通病，技术支持/系统管理员更钟情于和现实结合较紧密的实体架构图，而程序员/分析师更加钟情于内部的构造图。</para>
+     <para>有人说一张图胜过一千句话，那么悖论的地方在于把这句话用图表示下。概念图，也就是上一章所说的那么多子项目之间的关系：</para>
+     <para><imagedata fileref="xml/media/openstack_havana_conceptual_arch.png" width="8in" depth="11in" /></para>
+     <para>其实对于配置或者是开发者，下面这张逻辑架构图才更为重要，也就是数据的流向，虽然没有明确“图灵”状态。</para>
+     <para><imagedata fileref="xml/media/openstack-arch-havana-logical-v1.jpg" scale="1000" /></para>
+   </sect1>
+   <sect1>
+      <title>从源码构建</title>
+      <para>这个的灵感可能来自于<ulink url="http://www.linuxfromscratch.org/lfs/">LFS:Linux From Scratch </ulink>,更多的希望能够通过纯粹的Python来搞定，而不需要发行版的软件包管理器，这样做对于开发者大约有以下几个好处：</para>
+      <orderedlist numeration="arabic">
+        <listitem><para>可以过一遍OpenStack的python都用到了那些module</para></listitem>
+        <listitem><para>更重要的逻辑顺序</para></listitem>
+      </orderedlist>
+   </sect1>
+   <sect2>
+    <title>Nova--将计算资源管理并抛出服务的组件</title>
+    <para>使用git下载源码</para>
+      <screen><![CDATA[
+      $git clone https://github.com/openstack/nova.git
+      ]]></screen>
+
+   </sect2>
 </chapter>
 

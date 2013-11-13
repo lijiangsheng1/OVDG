@@ -29,4 +29,10 @@
 <xsl:param name="sans.font.family">wqy-microhei</xsl:param>
 
 
+<!-- about image media format -->
+
+<!-- about ulink options -->
+<xsl:param name="ulink.show">0</xsl:param>
+<xsl:param name="ulink.hyphenate">&#x200B;</xsl:param>
+
 </xsl:stylesheet>
