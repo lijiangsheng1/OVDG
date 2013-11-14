@@ -35,4 +35,7 @@
 <xsl:param name="ulink.show">0</xsl:param>
 <xsl:param name="ulink.hyphenate">&#x200B;</xsl:param>
 
+<xsl:param name="highlight.source" select="1"/>
+
+
 </xsl:stylesheet>

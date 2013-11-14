@@ -7,10 +7,14 @@
  <xi:include href="BookInfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include> 
  <xi:include href="guide.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="kvm.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="qemu.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="libvirt.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="libstoragemgmt.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="svirt_cgroup.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="spice.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="openvswitch.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="vdsm.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="ovirt.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="openstack.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="appendix.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </book>

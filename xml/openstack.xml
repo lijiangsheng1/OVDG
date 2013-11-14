@@ -1,6 +1,16 @@
 <chapter>
  <title>OpenStack:delivers a massively scalable cloud operating system</title>
   <para>随着OpenStack社区成功的运营，虽然未见到其在特性，性能等有相比其他同类开源产品有任何的优势，但是他火了，刚刚结束的每半年一次的OpenStack Summit HongKong,无论从赞助商、演讲者、参展商的规模，还是新版Havana的发布所提交的代码贡献者/企业，都可看出OpenStack的普及率，未来一片大好。</para>
+  <para>OpenStack相比于其他的IaaS解决平台，如Eucalyptus,Cloudstack,OpenNublua，Ganeti......未必有任何的优势，但是其社区的经营是非常成功的，我们可以列举一些基于这个项目的衍生出来的公司。</para>
+  <itemizedlist mark='opencircle'>
+       <listitem><para>RedHat</para></listitem>
+       <listitem><para>IBM</para></listitem>
+       <listitem><para>Rackspace</para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+  </itemizedlist>
    <sect1>
     <title>什么是OpenStack?</title>
      <para>OpenStack是致力于一个提供私有/公有云的开源平台，OpenStack的目的是为各种类型的云提供容易实现的、横向扩展的、功能丰富的解决方案。</para>
@@ -8,6 +18,14 @@
    <sect2>
      <title>历史背景</title>
      <para> 在2010年由Rackspace和NASA发起，现在由OpenStack基金会主持，已经发展为一个全球的开发社区，甚至是一个生态链。</para>
+   </sect2>
+   <sect2>
+      <title>社区介绍</title>
+      <para></para>
+   </sect2>
+   <sect2>
+      <title></title>
+      <para></para>
    </sect2>
    <sect1>
      <title>OpenStack子项目</title>
@@ -65,6 +83,8 @@
       <orderedlist numeration="arabic">
         <listitem><para>可以过一遍OpenStack的python都用到了那些module</para></listitem>
         <listitem><para>更重要的逻辑顺序</para></listitem>
+        <listitem><para>source级别的工作流程</para></listitem>
+        <listitem><para>hacker的“洁癖"</para></listitem>
       </orderedlist>
    </sect1>
    <sect2>
@@ -73,7 +93,97 @@
       <screen><![CDATA[
       $git clone https://github.com/openstack/nova.git
       ]]></screen>
-
+    <para>安装一些依赖</para>
+      <screen><![CDATA[
+      # aptitude install -y python-setuptools python-pip python-dev libxml2 libxslt-dev libz-dev
+      #cd $NOVA_SOURCE
+      #python setup.py install
+      ]]></screen>
+    <para>此时nova的安装配置会使用pip来自动安装一些python的模块/组件，如下列表：</para>
+    <orderedlist numeration="arabic">
+      <listitem><para> pbr:<ulink url="https://pypi.python.org/pypi/pbr">下载地址及简单介绍</ulink>,因Openstack而生，主要解决众多项目中的setuptools的配置问题。</para></listitem>
+      <listitem><para> SQLAlchemy:<ulink url="http://www.sqlalchemy.org/">官方地址</ulink>,python下的SQL工具，关系数据库映射库，足够的大名鼎鼎了。</para></listitem>
+      <listitem><para>amqplib</para></listitem>
+      <listitem><para>anyjson</para></listitem>
+      <listitem><para>boto</para></listitem>
+      <listitem><para>eventlet</para></listitem>
+      <listitem><para>Jinja2</para></listitem>
+      <listitem><para>kombu</para></listitem>
+      <listitem><para> lxml:<ulink url="http://lxml.de/">官方地址</ulink>,一个基于ElementTree API的解析XML的python库。</para></listitem>
+      <listitem><para>Routes</para></listitem>
+      <listitem><para>WebOb</para></listitem>
+      <listitem><para>greenlet</para></listitem>
+      <listitem><para>PasteDeploy</para></listitem>
+      <listitem><para>Paste</para></listitem>
+      <listitem><para>sqlalchemy-migrate</para></listitem>
+      <listitem><para>netaddr</para></listitem>
+      <listitem><para>suds</para></listitem>
+      <listitem><para>paramiko</para></listitem>
+      <listitem><para>pyasn1</para></listitem>
+      <listitem><para>Babel</para></listitem>
+      <listitem><para>iso8601</para></listitem>
+      <listitem><para>jsonschema</para></listitem>
+      <listitem><para>python-cinderclient</para></listitem>
+      <listitem><para>python-neutronclient</para></listitem>
+      <listitem><para>python-glanceclient</para></listitem>
+      <listitem><para>python-keystoneclient</para></listitem>
+      <listitem><para>six</para></listitem>
+      <listitem><para>stevedore</para></listitem>
+      <listitem><para>websockify</para></listitem>
+      <listitem><para>oslo.config</para></listitem>
+      <listitem><para>markupsafe</para></listitem>
+      <listitem><para>amqp</para></listitem>
+      <listitem><para>repoze.lru</para></listitem>
+      <listitem><para>decorator</para></listitem>
+      <listitem><para>Tempita</para></listitem>
+      <listitem><para>pycrypto</para></listitem>
+      <listitem><para>ecdsa</para></listitem>
+      <listitem><para>pytz</para></listitem>
+      <listitem><para>PreetyTable</para></listitem>
+      <listitem><para>simplejson</para></listitem>
+      <listitem><para>cliff</para></listitem>
+      <listitem><para>httplib2</para></listitem>
+      <listitem><para>warlock</para></listitem>
+      <listitem><para>numpy</para></listitem>
+      <listitem><para>pyparsing</para></listitem>
+      <listitem><para>cmd2</para></listitem>
+      <listitem><para>jsonpatch</para></listitem>
+      <listitem><para>jsonpointer</para></listitem>
+    </orderedlist>
+    <para>如果看到下面的内容，则安装顺利。如果遇到一些编译的问题，请google之，如numpy.</para>
+      <screen><![CDATA[......
+Copying nova.egg-info to /usr/local/lib/python2.7/dist-packages/nova-2014.1.dev746.g0f3776d.egg-info
+running install_scripts
+Installing nova-dhcpbridge script to /usr/local/bin
+Installing nova-manage script to /usr/local/bin
+Installing nova-api script to /usr/local/bin
+Installing nova-api-os-compute script to /usr/local/bin
+Installing nova-objectstore script to /usr/local/bin
+Installing nova-novncproxy script to /usr/local/bin
+Installing nova-rpc-zmq-receiver script to /usr/local/bin
+Installing nova-consoleauth script to /usr/local/bin
+Installing nova-network script to /usr/local/bin
+Installing nova-all script to /usr/local/bin
+Installing nova-api-ec2 script to /usr/local/bin
+Installing nova-api-metadata script to /usr/local/bin
+Installing nova-baremetal-deploy-helper script to /usr/local/bin
+Installing nova-clear-rabbit-queues script to /usr/local/bin
+Installing nova-xvpvncproxy script to /usr/local/bin
+Installing nova-conductor script to /usr/local/bin
+Installing nova-scheduler script to /usr/local/bin
+Installing nova-console script to /usr/local/bin
+Installing nova-spicehtml5proxy script to /usr/local/bin
+Installing nova-cert script to /usr/local/bin
+Installing nova-baremetal-manage script to /usr/local/bin
+Installing nova-compute script to /usr/local/bin
+Installing nova-cells script to /usr/local/bin
+Installing nova-rootwrap script to /usr/local/bin
+      ]]></screen>
+    <para>这个时候你可能还不能执行nova-*的任何程序，需要配置非常多的项，且让我慢慢到来。</para> 
    </sect2>
+   <sect1>
+     <title>如何开发及参与到社区</title>
+     <para></para>
+   </sect1>
 </chapter>
 
