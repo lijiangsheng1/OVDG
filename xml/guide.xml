@@ -1,4 +1,4 @@
-<chapter>
+<preface>
  <title>导读</title>
   <para> 这是一群苦逼的程序员在被进入云计算领域后，在经过痛苦的入门之后想到的，网络上的资源零零碎碎，各种开源工具鱼龙混杂。于是，这几个人就想着后来者们不要走那么多的弯路，那么就有了这本书。 </para>
   <para>申明：旨在引导，让一个开发者有个好的入门，不谈高深，也不谈系统管理。</para>
@@ -39,5 +39,5 @@
      <para>管理：将一切牢牢的控制着某中心节点, Ovirt</para>
      <para>OpenStack:IaaS平台的翘楚，Python能吃得消吗？</para>
    </section>
-</chapter>
+</preface>
 
