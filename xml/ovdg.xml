@@ -16,5 +16,6 @@
  <xi:include href="vdsm.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="ovirt.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="openstack.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="solution.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="appendix.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </book>

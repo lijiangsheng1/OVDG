@@ -1,21 +1,21 @@
 <chapter>
- <title>libvirt</title>
-  <para>能够操纵众多hypervisor的程序库</para>
+ <title>一个整个上述所有组件的解决方案</title>
+  <para>这依靠那个在技术和销售之间的幽灵去做的事情。比如redhat给美国军方做的超过3年的解决方案。</para>
    <sect1>
     <title>历史背景</title>
      <para></para>
    </sect1>
-   <sect1>
+   <sect2>
      <title>开发所需要的预备知识</title>
      <para> ... </para>
-   </sect1>
-   <sect1>
+   </sect2>
+   <sect3>
      <title>谈谈架构，以及数据流原理</title>
      <para> ... </para>
-   </sect1>
-   <sect1>
+   </sect3>
+   <sect4>
      <title>开发实例</title>
      <para> ... </para>
-   </sect1>
+   </sect4>
 </chapter>
 
