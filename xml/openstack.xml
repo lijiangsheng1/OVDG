@@ -181,9 +181,51 @@ Installing nova-rootwrap script to /usr/local/bin
       ]]></screen>
     <para>这个时候你可能还不能执行nova-*的任何程序，需要配置非常多的项，且让我慢慢到来。</para> 
    </sect2>
+   <sect2>
+      <title>Glance,镜像服务</title>
+      <para>一般的虚拟化管理平台，通常将一些已经安装好操作系统和应用的虚拟机会做成模板，便于后来的使用者更快速的使用，如Vmware,RHEV等，当然这也是虚拟化的一个优势，那为什么OpenStack要将它做成一个服务了呢？而且还是RESTFUL?</para>
+    <para>使用git下载源码</para>
+      <screen><![CDATA[
+      $git clone https://github.com/openstack/glance.git
+      ]]></screen>
+    <para>编译glance</para>
+    <para>毕竟是同一个大项目中的子项目，用到的一些Python的模块，很多都是通用的，下面将忽略掉和nova相同的内容，仅glance自身需要的独特的模块，下同。</para>
+     <orderedlist numeration="arabic">
+      <listitem><para>pyOpenSSL</para></listitem>
+      <listitem><para>ordereddict</para></listitem>
+      <listitem><para>python-swiftclient</para></listitem>
+      <listitem><para>passlib</para></listitem>
+      <listitem><para>wsgiref</para></listitem>
+      <listitem><para>requests</para></listitem>
+    </orderedlist>
+    <para>终端输出如下内容时，则表明安装成功。</para>
+    <screen><![CDATA[
+     Copying glance.egg-info to /usr/local/lib/python2.7/dist-packages/glance-2014.1.a118.g94aad9e.egg-info
+     running install_scripts
+     Installing glance-scrubber script to /usr/local/bin
+     Installing glance-cache-pruner script to /usr/local/bin
+     Installing glance-cache-cleaner script to /usr/local/bin
+     Installing glance-api script to /usr/local/bin
+     Installing glance-cache-prefetcher script to /usr/local/bin
+     Installing glance-replicator script to /usr/local/bin
+     Installing glance-cache-manage script to /usr/local/bin
+     Installing glance-manage script to /usr/local/bin
+     Installing glance-control script to /usr/local/bin
+     Installing glance-registry script to /usr/local/bin
+   ]]></screen>
+   </sect2>
    <sect1>
      <title>如何开发及参与到社区</title>
-     <para></para>
+     <para>既然OpenStack提供的Service的理念，那么作为程序员的你，可以有几种方式参与开发：</para>
+     <orderedlist numeration="arabic">
+        <listitem><para>使用OpenStack提供的RESTFUL api来写你需要的应用</para></listitem>
+        <listitem><para>参与到OpenStack本身的项目</para>
+            <orderedlist numeration="arabic">
+                <listitem><para>为框架内提供的接口写插件:如nova支持的hypervisor,cinder支持的block,Neutron支持的switch。</para></listitem>
+                <listitem><para>为框架本身写代码</para></listitem>
+            </orderedlist>
+        </listitem>
+     </orderedlist>
    </sect1>
 </chapter>
 
