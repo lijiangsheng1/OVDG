@@ -214,6 +214,64 @@ Installing nova-rootwrap script to /usr/local/bin
      Installing glance-registry script to /usr/local/bin
    ]]></screen>
    </sect2>
+   <sect2>
+      <title>Swift,Object存储</title>
+      <para>Object storage 和block storage，究竟谁可以走到最后？</para>
+    <para>使用git下载源码</para>
+      <screen><![CDATA[
+      $git clone https://github.com/openstack/swift.git
+      ]]></screen>
+    <para>编译swift</para>
+      <screen><![CDATA[
+      cd $SWIFT_HOME
+      sudo apt-get install -y libffi-dev
+      python setup.py install
+      ]]></screen>
+    <para>需要安装的额外的模块：</para>
+     <orderedlist numeration="arabic">
+      <listitem><para>dnspython</para></listitem>
+      <listitem><para>xattr</para></listitem>
+      <listitem><para>netifaces</para></listitem>
+      <listitem><para>pycparser</para></listitem>
+      <listitem><para>cffi</para></listitem>
+    </orderedlist>
+    <para>终端输出如下内容时，则表明安装成功。</para>
+    <screen><![CDATA[......
+changing mode of /usr/local/bin/swift-drive-audit to 755
+changing mode of /usr/local/bin/swift-object-expirer to 755
+changing mode of /usr/local/bin/swift-account-replicator to 755
+changing mode of /usr/local/bin/swift-oldies to 755
+changing mode of /usr/local/bin/swift-container-sync to 755
+changing mode of /usr/local/bin/swift-container-replicator to 755
+changing mode of /usr/local/bin/swift-dispersion-populate to 755
+changing mode of /usr/local/bin/swift-get-nodes to 755
+changing mode of /usr/local/bin/swift-form-signature to 755
+changing mode of /usr/local/bin/swift-recon to 755
+changing mode of /usr/local/bin/swift-config to 755
+changing mode of /usr/local/bin/swift-dispersion-report to 755
+changing mode of /usr/local/bin/swift-object-auditor to 755
+changing mode of /usr/local/bin/swift-ring-builder to 755
+changing mode of /usr/local/bin/swift-account-reaper to 755
+changing mode of /usr/local/bin/swift-temp-url to 755
+changing mode of /usr/local/bin/swift-object-replicator to 755
+changing mode of /usr/local/bin/swift-object-info to 755
+changing mode of /usr/local/bin/swift-recon-cron to 755
+changing mode of /usr/local/bin/swift-proxy-server to 755
+changing mode of /usr/local/bin/swift-container-auditor to 755
+changing mode of /usr/local/bin/swift-orphans to 755
+changing mode of /usr/local/bin/swift-container-server to 755
+changing mode of /usr/local/bin/swift-bench to 755
+changing mode of /usr/local/bin/swift-account-server to 755
+changing mode of /usr/local/bin/swift-account-auditor to 755
+changing mode of /usr/local/bin/swift-object-updater to 755
+changing mode of /usr/local/bin/swift-container-updater to 755
+changing mode of /usr/local/bin/swift-bench-client to 755
+changing mode of /usr/local/bin/swift-init to 755
+changing mode of /usr/local/bin/swift-object-server to 755
+changing mode of /usr/local/bin/swift-account-audit to 755
+    ]]></screen>
+    <para>请将上述的CLI的程序记下，大体的有个印象，对于分析整体的架构有莫大的好处。</para>
+   </sect2>
    <sect1>
      <title>如何开发及参与到社区</title>
      <para>既然OpenStack提供的Service的理念，那么作为程序员的你，可以有几种方式参与开发：</para>
