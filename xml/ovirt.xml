@@ -3,22 +3,164 @@
   <para>虚拟数据中心管理平台</para>
    <sect1>
     <title>历史背景</title>
-     <para>远在2008年的时候，Ovirt以Ruby on Rails的形式初出茅庐，在Redhat收购以色列公司后，此项目停止开发，但是此公司原来的虚拟化管理平台是基于windows C#程序语言开发的，即市场上出现的RHEV2.2产品系列，RedHat是一家以开源著称的公司，并且除经营企业级Linux服务器发行版之外，还是著名中间件JBoss的厂商版权所有者，于是进行了为期一年的C#向Java的迁移之旅，在2011年11月1日，发布了Ovirt3.0 OpenSource所有代码，融合了Redhat的系列产品有:RHEL，JBoss,PostGresql,IPA等一系列产品，当然，按照RedHat的模式，其商业产品一定有一个开发的社区支撑：Fedora,JBoss,postgresql,Free IPA等,理所当然的<ulink url="http://www.ovirt.org">Ovirt</ulink>,对应的商业产品就是RHEV.</para>
+     <para>远在2008年的时候，Ovirt以Ruby on Rails的形式初出茅庐，在Redhat收购以色列虚拟化软件开发公司<ulink url="http://en.wikipedia.org/wiki/Qumranet">Qumranet</ulink>后，此项目停止开发，但是此公司原来的虚拟化管理平台是基于windows C#程序语言开发的，即市场上出现的RHEV2.2产品系列，RedHat是一家以开源著称的公司，并且除经营企业级Linux服务器发行版之外，还是著名中间件JBoss的厂商版权所有者，于是进行了为期一年的C#向Java的迁移之旅，在2011年11月1日，发布了Ovirt3.0 OpenSource所有代码，融合了Redhat的系列产品有:RHEL，JBoss,PostGresql,IPA等一系列产品。当然，按照RedHat的模式，其商业产品一定有一个开发的社区支撑：Fedora,JBoss,postgresql,Free IPA等,理所当然的<ulink url="http://www.ovirt.org">Ovirt</ulink>,对应的商业产品就是RHEV.</para>
     <sect2>
-      <title></title>    
+      <title>简单介绍</title>  
+      <para>我试图将一些特性罗列到此处，商业的内容、社区的介绍等。 </para>
+  <itemizedlist mark='opencircle'>
+       <listitem><para>可安装在现有的linux操作系统上，或者是单独的Node节点。</para></listitem>
+       <listitem><para>高可用</para></listitem>
+       <listitem><para>在线迁移</para></listitem>
+       <listitem><para>负载均衡</para></listitem>
+       <listitem><para>基于web的管理、用户界面</para></listitem>
+       <listitem><para>支持iSCSI,FC,NFS,glusterfs,posix标准fs，及本地的存储</para></listitem>
+       <listitem><para>sVirt支持，使虚拟机和hypervisor支持MAC(Mandatory Access Control)</para></listitem>
+       <listitem><para>单机hypervisor为虚拟机提供最多64vCPU和2TB的内存</para></listitem>
+       <listitem><para>Branding, 可随意定制自己的界面，如风格,logo等</para></listitem>
+       <listitem><para>SPICE协议集成支持</para></listitem>
+       <listitem><para>PCI_passthrough</para></listitem>
+       <listitem><para>Gluster集成管理</para></listitem>
+       <listitem><para>Openstack Glance和Neutron支持</para></listitem>
+       <listitem><para>......</para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+  </itemizedlist>
+       <para>更多特性列表请查看<ulink url='http://www.ovirt.org/Category:Feature'>官方wiki</ulink></para>
+       <para>用户案例之<ulink url='http://www.alterway.fr/'>Alertway</ulink>分享</para>
+       <note>
+           <title>Alertway简介</title>
+           <para>这是一家提供主机和服务的法国公司，成立于2006年，使用Ovirt提供公有云服务。在2012年10月份发布时已经有300多虚拟机为客户使用。云服务的名称叫做<ulink url='http://h2o.alterway.fr/'>H<subscript>2</subscript>O</ulink></para>
+       </note>
+       <para>Alertway早期就决定了使用KVM作为底层的hypervisor，（这个具体原因不清楚。）但是对比了几家虚拟化管理平台，如：OpenNebula, CloudStack, Proxmox, Red Hat Enterprise Virtualization, oVirt and OpenStack.最后选择采用OVirt作为公有云服务，采用Openstack作为自身业务的私有云平台。称OVirt在scale up上要胜于scale out，尤其是内存气球驱动机制，可以很好的满足用户对于内存的scale up的要求。</para>
+       <para>另外决定Alertway使用Ovirt的原因是：拥有非常活跃的社区，有清晰的roadmap,预期承诺的release日期，社区的主要成员有来自IT大厂商如：RedHat、IBM、Intel、NetApp、Cisco。</para>
+       <para>还有一个让Alertway称道的是Ovirt整合OpenStack的服务，如Glance和Neutron可以被Ovirt所使用，这很好的解决了Alertway的公有云和私有云的问题。</para>
+       
     </sect2>
    </sect1>
    <sect1>
-     <title>架构及周边知识</title>
-     <para> ... </para>
+           <title>安装、配置Ovirt3.3</title>
+           <para>这似乎是每个程序员所鄙夷的事情，因为这个完全是不需要写下的，但是，我还是违背下这些人的意愿，如果不喜欢请略过此章节。</para>
+         <sect2>
+           <title>环境准备</title>
+		       <table><title>软硬件配置清单</title>
+			 <tgroup cols="2">        <!-- 註1 -->
+			 <thead>
+			 <row>
+			    <entry>硬件厂商型号</entry>
+			    <entry>Supermicro X9SCD</entry>
+			</row>
+		      </thead>
+		      <tbody>
+			<row>
+			  <entry>CPU</entry>
+			  <entry>Intel(R) Xeon(R) CPU E3-1230 V2 @ 3.30GHz X2</entry>
+			</row>
+			<row>
+			  <entry>Memory</entry>
+			  <entry>Kingston DDR3 8GB X2</entry>
+			</row>
+			<row>
+			  <entry>硬盘</entry>
+			  <entry>Seagate ATA Disk 1TB</entry>
+			</row>
+			<row>
+			  <entry>操作系统</entry>
+			  <entry>CentOS 6.4 x86_64</entry>
+			</row>
+		      </tbody>
+		    </tgroup>
+		  </table>
+           <para></para>
+         </sect2>
+         <sect2>
+           <title>安装软件包</title>
+           <para>首先安装ovirt的yum源，以及EPEL的源。</para>
+	      <screen><![CDATA[
+              #yum localinstall -y http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+              #yum localinstall -y http://ovirt.org/releases/ovirt-release-el.noarch.rpm
+	      ]]></screen>
+           <para>安装ovirt</para>
+	      <screen><![CDATA[
+              #yum install -y ovirt-engine
+	      ]]></screen>
+           <para>因为实验环境所限，正如上文提到的，仅有一台服务器的时候，需要安装all-in-one的包。</para>
+	      <screen><![CDATA[
+              #yum install -y ovirt-engine-setup-plugin-allinone
+	      ]]></screen>
+         </sect2>
+         <sect2>
+           <title>初始化配置</title>
+           <para>交互式的回答一些问题，类似下面的内容:</para>
+           <screen><![CDATA[
+            ...... 
+           ]]></screen>
+           <para>内容实在太多了，我都懒得解释了。</para>
+         </sect2>
+         <sect2>
+           <title>Troubeshooting</title>
+           <orderedlist numeration="lowerroman">
+            <listitem><para>如果你的主机名没有加入公司的DNS服务的话，请将它加入到机器中的/etc/hosts文件中</para></listitem>
+            <listitem><para>配置完成后，请执行service network restart。新建立的bridge是不工作的。</para></listitem>
+           </orderedlist>
+           <para></para>
+         </sect2>
+         <sect2>
+           <title></title>
+           <para></para>
+         </sect2>
    </sect1>
    <sect1>
-     <title>工作流程</title>
-     <para> ... </para>
+     <title>架构及周边知识</title>
+     <para>从三千英里的高空下俯视ovirt：</para>
+     <para><imagedata fileref="xml/media/Ovirt-1024x698.png" width="8in" depth="11in" /></para>
    </sect1>
+   <sect2>
+     <title>工作流程或者说各组件之间的关系</title>
+     <para></para>
+   </sect2>
+   <sect3>
+     <title>Engine</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Engine-core architecture</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Host Agent(<link linkend="vdsm">VDSM</link>)</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Hooks</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>MoM</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>REST API</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Report Engine</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>DWH</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Guest Agent</title>
+     <para> </para>
+   </sect3>
    <sect1>
      <title>开发实例</title>
-     <para> ... </para>
+     <para>读者看到这里，心里应该有一个蓝图了，根据不同的subproject，可以有不同的选择，但是仍然有两种：</para>
+     <itemizedlist>
+       <listitem><para>基于Ovirt RESTful API写你自己的应用</para></listitem>
+       <listitem><para>为ovirt的项目提交patch或增加feature</para></listitem>
+     </itemizedlist>
    </sect1>
 </chapter>
 

@@ -37,22 +37,23 @@
    </section>
    <section>
      <title>本书的约定</title>
-     <para> ... </para>
+     <para></para>
    </section>
    <section>
      <title>获得本书</title>
-     <para> ... </para>
+     <para>本书的源代码可以从<ulink url='https://github.com/lijiangsheng1/OVDG'>github</ulink>上获取，或者到这里下载编译好的pdf文件。</para>
    </section>
    <section>
      <title>获得本书的例子</title>
-     <para> ... </para>
+     <para></para>
    </section>
    <section>
      <title>请求评论</title>
-     <para> ... </para>
+     <para></para>
    </section>
    <section>
      <title>致谢（适兕）</title>
+     <para>首先感谢那些为开源作出贡献的人们！真的不敢想象，没有你们的世界是什么样子的。</para>
      <para> 本书的写作将花费大量的时间！ </para>
    </section>
    <section>
