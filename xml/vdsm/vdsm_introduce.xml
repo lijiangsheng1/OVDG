@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="vdsm_introduce">
+  <title>VDSM介绍</title>
+  <para>VDSM,是英文Virtual Desktop and Server Management 的缩写，顾名思义，就是
+        虚拟化桌面及服务器管理，也就是说它设计、开发的初衷就是管理本地的和虚拟化
+        相关的所有资源，如主机服务器、存储、网络、虚拟化以及自身的守护进程、日志
+        等</para>
+  <sect1>
+    <title>什么是VDSM</title>
+    <para>首先VDSM是为上层的管理程序如oVirt服务的，其抛出xml-rpc/json-rpc的API,用
+          来管理运行着KVM hypervisor的服务器主机。其次，VDSM管理和监控着主机的内存
+          、存储、网络，乃至客户机操作系统。最后，当然其是运行在Linux的环境中。</para>
+  </sect1>
+  <sect1>
+    <title>VDSM有何功能？</title>
+    <para>能够做什么，才是最重要的。</para>
+    <itemizedlist mark='opencircle'>
+       <listitem><para>虚拟机的生命周期管理</para></listitem>
+       <listitem><para>服务器主机的bootstrap和注册</para></listitem>
+       <listitem><para>监控服务器主机和虚拟机</para></listitem>
+       <listitem><para>网络配置</para></listitem>
+       <listitem><para>存储管理</para></listitem>
+       <listitem><para>规则管理
+                 </para>
+                 <itemizedlist mark='opencircle'>
+                   <listitem><para>任务调度</para></listitem>
+                   <listitem><para>内存共享KSM</para></listitem>
+                   <listitem><para>精简虚拟机磁盘实现</para></listitem>
+                   <listitem><para>存储/网络/CPU的QoS实现</para></listitem>
+                   <listitem><para>内存气球驱动实现</para></listitem>
+                 </itemizedlist>
+       </listitem>
+    </itemizedlist>
+    
+  </sect1>
+
+</section>

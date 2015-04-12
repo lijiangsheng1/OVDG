@@ -1,21 +1,10 @@
 <chapter id='vdsm'>
- <title>Virtual Desktop Server Manager</title>
-  <para></para>
-   <sect1>
-    <title>历史背景</title>
-     <para></para>
-   </sect1>
-   <sect2>
-     <title>开发所需要的预备知识</title>
-     <para> ... </para>
-   </sect2>
-   <sect3>
-     <title>谈谈架构，以及数据流原理</title>
-     <para> ... </para>
-   </sect3>
-   <sect4>
-     <title>开发实例</title>
-     <para> ... </para>
-   </sect4>
+ <title>虚拟化桌面和服务器管理者</title>
+  <para>VDSM,oVirt项目的host agent，核心项目之一，驱动着libvirt,qemu,openvswitch等</para>
+  <xi:include href="vdsm/vdsm_history.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_introduce.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_prerequisite.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_arch.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </chapter>
 

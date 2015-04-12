@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="vdsm_history">
+  <title>历史背景</title>
+  <para>VDSM的历史要追溯到2008年红帽收购的Qumranet,Qumranet是一家以色列的创业公司，
+以开发了KVM--Linux kernel的虚拟化模块而闻名，但是其还有另外一块产品，那就是远程桌
+面协议SPICE，其也有桌面虚拟化的产品，在被红帽收购的两年后，红帽将其全部开源，其中
+服务器的代理程序--VDSM就是其中之一。</para>
+
+</section>
