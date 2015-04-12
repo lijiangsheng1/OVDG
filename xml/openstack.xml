@@ -91,9 +91,9 @@
          <para>Trove</para>
         </listitem>
       </itemizedlist>
+<!--      </itemizedlist>
       </itemizedlist>
-      </itemizedlist>
-      </itemizedlist>
+      </itemizedlist>-->
      <para>还有一些仍然在孵化中的项目，如：melange，staccato，更多信息请参考：<ulink url="https://launchpad.net/openstack">launchpad上openstack主页。</ulink></para>
    </sect1>
    <sect1>
