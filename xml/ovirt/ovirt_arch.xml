@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="ovirt_arch">
+  <title>oVirt 架构：程序员视野</title>
+  <para>这里说的架构要区别于用户应用场景视野的架构，也就是说不会讲网络拓扑结构，
+        也不会讲用户业务应用系统的来龙去脉。</para>
+   <sect1>
+     <title>架构及周边知识</title>
+     <para>从三千英里的高空下俯视oVirt：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/3000_feet_ovirt_arch.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <para>我们减低到差不多和我们身高的高度，再来审视一次oVirt：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Ovirt-1024x698.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+
+   </sect1>
+   <sect2>
+     <title>工作流程或者说各组件之间的关系</title>
+     <para></para>
+   </sect2>
+   <sect3>
+     <title>Engine</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Engine-core architecture</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Host Agent(<link linkend="vdsm">VDSM</link>)</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Hooks</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>MoM</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>REST API</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Report Engine</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>DWH</title>
+     <para> </para>
+   </sect3>
+   <sect3>
+     <title>Guest Agent</title>
+     <para> </para>
+   </sect3>
+
+</section>

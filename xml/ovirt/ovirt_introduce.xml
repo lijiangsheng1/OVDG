@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="ovirt_introduce">
+  <title>oVirt 介绍</title>
+  <para>oVirt是一个基于全虚拟化hypervisor--KVM的集虚拟机生命周期管理、网络管理、存储
+        管理的基础设施虚拟化管理平台。
+        </para>
+  <sect1>
+     <title>特性介绍</title>  
+     <para>我试图将一些特性罗列到此处，商业的内容、社区的介绍等。 </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>可安装在现有的linux操作系统上，或者是单独的Node节点。</para></listitem>
+       <listitem><para>高可用</para></listitem>
+       <listitem><para>在线迁移</para></listitem>
+       <listitem><para>负载均衡</para></listitem>
+       <listitem><para>基于web的管理、用户界面</para></listitem>
+       <listitem><para>支持iSCSI,FC,NFS,glusterfs,posix标准fs，及本地的存储</para></listitem>
+       <listitem><para>sVirt支持，使虚拟机和hypervisor支持MAC(Mandatory Access Control)</para></listitem>
+       <listitem><para>单机hypervisor为虚拟机提供最多64vCPU和2TB的内存</para></listitem>
+       <listitem><para>Branding, 可随意定制自己的界面，如风格,logo等</para></listitem>
+       <listitem><para>SPICE协议集成支持</para></listitem>
+       <listitem><para>PCI_passthrough</para></listitem>
+       <listitem><para>Gluster集成管理</para></listitem>
+       <listitem><para>Openstack Glance和Neutron支持</para></listitem>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+     <para>更多特性列表请查看<ulink url='http://www.ovirt.org/Category:Feature'>官方wiki</ulink></para>
+  </sect1>
+</section>
