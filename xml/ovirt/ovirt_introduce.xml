@@ -29,4 +29,16 @@
      </itemizedlist>
      <para>更多特性列表请查看<ulink url='http://www.ovirt.org/Category:Feature'>官方wiki</ulink></para>
   </sect1>
+  <sect1>
+    <title>部署oVirt的理由</title>
+    <para></para>
+    <itemizedlist mark='opencircle'>
+        <listitem><para>可在一个平台下整合多种类型的硬件。如power和x86。</para></listitem>
+        <listitem><para>通过一个中心化的图形界面管理一切资源。如主机、网络、存储及虚拟机。</para></listitem>
+        <listitem><para>可管理大规模的虚拟机。</para></listitem>
+        <listitem><para>虚拟机的集群和负载均衡自动化。</para></listitem>
+        <listitem><para>集成OpenStack的镜像和网络服务。</para></listitem>
+        <listitem><para>从应用程序高可用的角度考虑在线迁移和主机的失效切换。</para></listitem>
+    </itemizedlist>
+  </sect1>
 </section>
