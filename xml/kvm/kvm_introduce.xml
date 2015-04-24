@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="kvm_introduce">
+  <title>KVM 介绍</title>
+  <para>KVM（基于内核的虚拟机）是一款基于X86硬件虚拟化扩展（Intel VT及AMD-V）的全虚拟化hypervisor,
+        使用KVM,可运行多个虚拟机，且其上可运行无须更改的Linux,Windows等操作系统，每个虚拟机拥有私
+        有的，独立的虚拟硬件设备，如网卡、磁盘、显卡等。
+        </para>
+  <sect1>
+     <title>KVM模拟的硬件</title>  
+     <para> </para>
+      <table>
+        <title>硬件描述</title>
+        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+          <thead>
+            <row>
+              <entry>
+               类型 
+              </entry>
+              <entry>
+               设备 
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+               显卡
+              </entry>
+              <entry>
+               Cirrus CLGD 5446 PCI VGA card, dummy VGA card with Bochs VESA extensions,或 Virgil as a virtual 3D GPU
+              </entry>
+            </row>
+            <row>
+              <entry>
+               PCI
+              </entry>
+              <entry>
+               i440FX host PCI bridge and PIIX3 PCI to ISA bridge
+              </entry>
+            </row>
+            <row>
+              <entry>
+              输入设备
+              </entry>
+              <entry>
+                PS/2 Mouse and Keyboard
+              </entry>
+            </row>
+            <row>
+              <entry>
+               声卡
+              </entry>
+              <entry>
+               Sound Blaster 16, ENSONIQ AudioPCI ES1370, Gravis Ultrasound GF1, CS4231A compatible
+              </entry>
+            </row>
+            <row>
+              <entry>
+               网卡
+              </entry>
+              <entry>
+                AMD Am79C970A (Am7990), E1000 (Intel 82540EM, 82573L, 82544GC), NE2000, 以及 Realtek RTL8139
+              </entry>
+            </row>
+            <row>
+              <entry>
+                看门狗计时器
+              </entry>
+              <entry>
+               Intel 6300ESB or IB700
+              </entry>
+            </row>
+            <row>
+              <entry>
+              内存
+              </entry>
+              <entry>
+               在50M到32TB之间
+              </entry>
+            </row>
+            <row>
+              <entry>
+               CPU
+              </entry>
+              <entry> 
+               1~160颗CPU
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+</section>

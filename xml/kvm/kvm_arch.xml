@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="kvm_arch">
+  <title>KVM 工作原理</title>
+  <para>默认情况下，KVM并不能执行模拟器的任何操作，而是抛出了/dev/kvm接口，让用户态的程序
+        做如下一些操作:
+        </para>
+  <itemizedlist mark='opencircle'>
+       <listitem><para>设置客户虚拟机地址空间。</para></listitem>
+       <listitem><para>客户模拟I/O的Feed。</para></listitem>
+       <listitem><para>映射虚拟机的显示到主机。</para></listitem>
+  </itemizedlist>
+  <para>在Linux中，做这些工作的是Qemu。</para>  
+  <sect1>
+    <title>架构简单描述</title>
+    <para>我们先来看一张图，如下:</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Kernel-based_Virtual_Machine.svg" width="6in" />
+        </imageobject>
+     </mediaobject>
+  </sect1>
+  <sect1>
+   <title>CPU的硬件扩展</title>
+   <para>在本章开始部分介绍KVM的时候，我们就阐释过KVM是依赖于硬件的扩展的，还举出了intel vt
+         和AMD-V的技术，本节试图将这个CPU的扩展技术解释一下。</para>
+  
+  </sect1>
+</section>

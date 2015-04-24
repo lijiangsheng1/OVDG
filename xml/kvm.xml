@@ -1,21 +1,8 @@
 <chapter>
  <title>kernel based virtual machine</title>
   <para></para>
-   <sect1>
-    <title>历史背景</title>
-     <para></para>
-   </sect1>
-   <sect2>
-     <title>开发所需要的预备知识</title>
-     <para> ... </para>
-   </sect2>
-   <sect3>
-     <title>谈谈架构，以及数据流原理</title>
-     <para> ... </para>
-   </sect3>
-   <sect4>
-     <title>开发实例</title>
-     <para> ... </para>
-   </sect4>
+  <xi:include href="kvm/kvm_history.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="kvm/kvm_introduce.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="kvm/kvm_arch.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </chapter>
 

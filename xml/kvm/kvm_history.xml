@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="kvm_history">
+  <title>KVM 历史 </title>
+  <para> KVM最初是由Avi Kivity在Qumranet发起并开发的。Qumranet是一家纯技术的创业公司。
+         在2008年的时候被红帽公司收购。
+        </para>
+  <tip><para>Avi Kivity,目前已经是cloudius的CTO,开始了著名的OSv的创业。</para></tip>
+  <para>KVM第一次纳入Linux的版本是2.26.20，那时是2007年2月5号。<link xlink:href="http://kernelnewbies.org/Linux_2_6_20#head-bca4fe7ffe454321118a470387c2be543ee51754">这里是当年的发行注记。</link></para>
+  <para>KVM的维护者是Paolo Bonzini 和 Gleb Natapov</para>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>
