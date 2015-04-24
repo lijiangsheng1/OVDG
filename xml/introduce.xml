@@ -1,0 +1,33 @@
+<chapter id="ovdg_introduce">
+ <title>介绍</title>
+  <para>云计算在本书写作的时候，已经成为一种常态，尤其是亚马逊的AWS服务更是帮助很多企业
+        走上了节省成本、快速上线、按需付费等的道路，而虚拟化技术是其主要的支撑技术之一。
+        </para>
+  <para>在2015年的第二个季度开始的时候，著名的开源公司黑鸭子发布了2015年的开源技术的调查
+        报告。开源技术正在进入企业、政府等的视野，不是犹豫的问题，而是选择什么的问题。
+        </para>
+  <para>在 <xref linkend="ovdg_guide"/>中已经谈到为什么写这本书，意义何在。</para>
+  <para>本书的主题就是开放源代码、虚拟化。开放源代码指的是本书中所选择的项目，均为基于开
+        放源代码协议的，诸如Apache,GPL,GPLv2,LGPL,MIT等协议下的项目。虚拟化，其实指的是广
+        义的虚拟化，如存储资源、网络资源、计算资源等，甚至也涉及到相应的管理工具。</para>
+  <para>至于为什么要以书中的这些项目而例来谈，这个作者无法拿严肃的数据来说话，其实符合上述
+        两条的项目，真的不太多，就本书而言，比如hypervisor为什么选KVM而不是Xen,那我真的要对
+        Xen阵营的人，说声对不起了，我没有研究过，或没有实际的开发经验。然而又如qemu,开源的
+        模拟器实现，其实没其它好选择的。</para>
+  <para>其实本书，主要的思路还是来自于oVirt项目，比如KVM管理工具有很多，见
+        <ulink url="http://www.linux-kvm.org/page/Management_Tools">KVM官方页面</ulink>。本
+        书围绕着oVirt所涉及到的项目，逐项展开，诸如KVM,Qemu,Libvirt,VDSM,SPICE,oVirt-engine
+        乃至virt-viewer，最后也谈到了OpenStack平台将资源的服务化IaaS平台，最后形成一个完整的
+        解决方案，无论是传统服务的移植、虚拟化、VDI,还是IaaS平台，最终让程序员们可以看到这套
+        系统是如何帮助企业解决实际问题的。
+        </para>
+  <para>本书涉及面较为广泛，从硬件的知识，如CPU指令集，到中间件，如Jboss的解释，乃至应用层，
+        REST API等。</para>
+  <para>本书目前为止，还仍然是一个人在写作，这确实是个很大的挑战，作者的组织能力有限，未能发
+        动起志同道合者一起来完成，一个人写至少有两点坏处:</para>
+     <orderedlist numeration="arabic">
+         <listitem><para>个人知识能力有限，不能做到每个项目都细致。</para></listitem>
+         <listitem><para>用时间换取空间的常见做法，就是本书的真正完成时间基本没戏。</para></listitem>
+     </orderedlist>
+</chapter>
+

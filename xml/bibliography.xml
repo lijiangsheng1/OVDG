@@ -1,0 +1,18 @@
+<!DOCTYPE bibliography PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<bibliography><title>参考资料</title>
+
+<bibliomixed>
+  <bibliomset relation='article'>
+    <surname></surname>, <firstname></firstname>.
+    <title role='article'>http://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine</title>.
+  </bibliomset>
+  <bibliomset relation='journal'>
+    <title>Best practices for KVM</title> 
+    <volumenum>2</volumenum><issuenum>1</issuenum>.
+    <publishername>IBM Corporation</publishername> 及
+    <corpname>IBM Corporation</corpname>.
+    <pubdate>2012</pubdate></bibliomset>.
+</bibliomixed>
+
+</bibliography>

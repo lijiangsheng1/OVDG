@@ -6,6 +6,7 @@
 <book>
  <xi:include href="BookInfo.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include> 
  <xi:include href="guide.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="introduce.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include> 
  <xi:include href="kvm.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="qemu.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="libvirt.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
@@ -18,5 +19,6 @@
  <xi:include href="openstack.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="solution.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="appendix.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+ <xi:include href="bibliography.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
  <xi:include href="glossary.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </book>

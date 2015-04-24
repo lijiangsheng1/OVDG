@@ -1,4 +1,4 @@
-<preface>
+<preface id="ovdg_guide">
  <title>导读</title>
   <para> 这是一群苦逼的程序员在被进入云计算领域后，在经过痛苦的入门之后想到的，网络上的资源零零碎碎，各种开源工具鱼龙混杂。于是，这几个人就想着后来者们不要走那么多的弯路，那么就有了这本书。 </para>
   <para>申明：旨在引导，让一个开发者有个好的入门，不谈高深，也不谈系统管理。</para>
@@ -10,14 +10,14 @@
      <title>为什么阅读本书？</title>
        <subtitle>做事情需要一个理由？</subtitle>
        <para>其实你没有理由来阅读这本书。中文的世界里大多是浮躁的，本书的作者就是一鲜明的例子，做为程序员，你更应该去关注语言、设计，而不是某个具体的项目,但是，为什么很多人抱怨Open Source的项目大多文档少，图书少？即使有，质量也难以苟同。</para>
-       <para>但是那为什么那么的入门图书？那么的in a nutshell? </para>
+       <para>但是那为什么那么多的入门图书？那么多的in a nutshell? </para>
    </section>
    <section>
      <title>本书的读者</title>
      <para>本书的作者试图将读者定位于那些对linux/Open Souce/虚拟化/IaaS有兴趣的，可以不分年龄、性别、职业。</para>
      <section>
        <title>为什么要虚拟化？</title>
-       <para>这个问题的回答，要分开两种方式来回答，</para>
+       <para>这个问题的回答，要分开两种方式来回答。</para>
      </section>
      <para> </para>
    </section>
@@ -32,8 +32,8 @@
      <para>存储虚拟化：带外的天下,libstoragemgmt</para>
      <para>访问虚拟化：Spice,不只是诱人的小辣椒.</para>
      <para>安全和资源限制:sVirt和CGroup</para>
-     <para>管理：将一切牢牢的控制着某中心节点, Ovirt</para>
-     <para>OpenStack:IaaS平台的翘楚，Python能吃得消吗？</para>
+     <para>管理：将一切牢牢的控制着某中心节点, oVirt</para>
+     <para>OpenStack:IaaS平台的翘楚，</para>
    </section>
    <section>
      <title>本书的约定</title>
@@ -45,7 +45,7 @@
    </section>
    <section>
      <title>获得本书的例子</title>
-     <para></para>
+     <para>在源代码树中的example目录中依章节寻找。</para>
    </section>
    <section>
      <title>请求评论</title>
@@ -58,7 +58,7 @@
    </section>
    <section>
      <title></title>
-     <para> ... </para>
+     <para></para>
    </section>
 </preface>
 
