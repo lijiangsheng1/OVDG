@@ -21,47 +21,103 @@
             <imagedata fileref="../media/Ovirt-1024x698.png" width="6in" />
         </imageobject>
      </mediaobject>
-
-   </sect1>
-   <sect2>
-     <title>工作流程或者说各组件之间的关系</title>
+     <para>一般情况，oVirt的部署包含三个部分。</para>
+     <orderedlist numeration="arabic">
+        <listitem><para>oVirt-engine,用于部署、监控、移动、创建、启动/停止虚拟机，镜像，
+                        配置存储，网络等等。可谓是一个中央控制中心。</para></listitem>
+        <listitem><para>一个或多个主机节点，这是运行虚拟机的服务器。</para></listitem>
+        <listitem><para>一个或多个存储，存储虚拟机的镜像或者安装、应用程序的ISO等。</para></listitem>
+     </orderedlist>
+     <para>外挂身份认证系统也是oVirt的一个特性，支持的产品有微软的活动目录，FreeIPA,以及
+           OpenLDAP。</para>
      <para></para>
-   </sect2>
-   <sect3>
+   </sect1>
+   <sect1>
+     <title>深入到程序的角度来观察下整体的架构,如下图所示：</title>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Ovirt-all-arch.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <para>以下对各个组件作简单的概述。</para>
+     <orderedlist numeration="arabic">
+        <listitem><para>Engine:管理oVirt主机，存储，网络，虚拟机生命周期管理，调度，集群管理
+                       等，是整体架构的“大脑”。</para></listitem>
+        <listitem><para>管理员门户：基于web的用户界面，为系统管理员提供可视化的管理工具。   
+                        </para></listitem>
+        <listitem><para>用户门户：为最终用户提供的简单访问应用，基于Web的图形界面。          
+                        </para></listitem>
+        <listitem><para>REST API: 一个允许应用程序执行虚拟操作的API，命令行工具和 python SDK 
+                        就是基于它而实现的。</para></listitem>
+        <listitem><para>CLI/SDK - 命令行界面和 SDK 提供了一种通过脚本操作与 engine 进行通信的
+                        方式。</para></listitem>
+        <listitem><para>数据库 - 为ovirt 部署的配置提供了持久性的信息存储， engine 使用Postgres
+                        关系型数据库。</para></listitem>
+        <listitem><para>主机代理 (VDSM) - oVirt engine 与 VSDM 进行交流，向主机请求与虚拟机相
+                        关的操作。</para></listitem>
+        <listitem><para>DWH (数据仓库) - 数据仓库组件在数据上实行 ETL 操作，这些数据从使用了 
+                        Talend 的数据库中抽取出来，操作执行后会将数据插至历史库中。
+                  </para></listitem>
+        <listitem><para>报表引擎 - 使用 Jasper 报表生成基于历史库的数据和系统资源使用情况的报告。
+                  </para></listitem>
+        <listitem><para>SPICE 客户端 - 允许用户访问虚拟机的SPICE协议的客户端实现。</para>
+                         </listitem>
+        <listitem><para>Guest agent - 安装在客户操作系统中的代理程序，通过virtio-serial和VDSM
+                        通信，用来收集客户操作系统的监控信息，以及单点登录的实现。
+                  </para></listitem>
+     </orderedlist>
+     <para></para>
+   <sect2>
      <title>Engine</title>
-     <para> </para>
-   </sect3>
-   <sect3>
+     <para>Engine具有的一些功能： </para>
+     <orderedlist numeration="arabic">
+         <listitem><para>虚拟机生命周期管理</para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+         <listitem><para></para></listitem>
+     </orderedlist>
+   </sect2>
+   <sect2>
      <title>Engine-core architecture</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>Host Agent(<link linkend="vdsm">VDSM</link>)</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>Hooks</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>MoM</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>REST API</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>Report Engine</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>DWH</title>
      <para> </para>
-   </sect3>
-   <sect3>
+   </sect2>
+   <sect2>
      <title>Guest Agent</title>
      <para> </para>
-   </sect3>
+   </sect2>
+   </sect1>
 
 </section>
