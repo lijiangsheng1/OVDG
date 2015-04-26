@@ -15,4 +15,43 @@
     <pubdate>2012</pubdate></bibliomset>.
 </bibliomixed>
 
+<bibliodiv>
+  <title>论文参考</title>
+  <bibliomixed xreflabel="2003-xensosp">
+    <authorgroup>
+      <author>
+        <personname>
+          <firstname>Paul</firstname>
+          <surname>Barham </surname>
+        </personname>
+      </author>
+      <author>
+        <personname>
+          <firstname>Boris</firstname>
+          <surname>Dragovic, </surname>
+        </personname>
+      </author>
+      <author>
+        <personname>
+          <firstname>Keir</firstname>
+          <surname>Fraser, </surname>
+        </personname>
+      </author>
+      <author>
+        <personname>
+          <firstname>Steven</firstname>
+          <surname>Hand, 等. </surname>
+        </personname>
+      </author>
+    </authorgroup>
+    <title>Xen and the Art of Virtualization </title>
+    <edition>1st ed. </edition>
+    <address>versity of Cambridge Computer Laboratory
+15 JJ Thomson Avenue, Cambridge, UK, CB3 0FDNew Jersey : </address>
+    <publishername>Cambridge, UK. </publishername>
+    <pubdate>2003:</pubdate>
+    <pagenums>.</pagenums>
+  </bibliomixed>
+
+</bibliodiv>
 </bibliography>
