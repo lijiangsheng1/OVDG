@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="kvm_initialization">
+  <title>KVM初始化过程 </title>
+  <para> 
+        </para>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para>加载kvm.o和vmx或svm</para>
+    </step>
+    <step>
+     <para>加载完成后，/dev/kvm就可以被用户空间访问。</para>
+    </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm1.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+  </procedure>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para></para>
+    </step>
+    <step>
+     <para></para>
+    </step>
+  </procedure>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para></para>
+    </step>
+    <step>
+     <para></para>
+    </step>
+  </procedure>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para></para>
+    </step>
+    <step>
+     <para></para>
+    </step>
+  </procedure>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para></para>
+    </step>
+    <step>
+     <para></para>
+    </step>
+  </procedure>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para></para>
+    </step>
+    <step>
+     <para></para>
+    </step>
+  </procedure>
+  <procedure>
+    <title>加载模块</title>
+    <step>
+     <para></para>
+    </step>
+    <step>
+     <para></para>
+    </step>
+  </procedure>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

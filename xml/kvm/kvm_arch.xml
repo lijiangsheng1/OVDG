@@ -27,6 +27,39 @@
    <title>CPU的硬件扩展</title>
    <para>在本章开始部分介绍KVM的时候，我们就阐释过KVM是依赖于硬件的扩展的，还举出了intel vt
          和AMD-V的技术，本节试图将这个CPU的扩展技术解释一下。</para>
-  
+   <para>笼统一点讲，就是将一个CPU分成多个独立的计算单元，看起来在一台机器中可以同时运行多个
+         操作系统。</para>
+   <para>在 intel的x86处理器中，支持虚拟化技术，增加了一个指令集叫做virtual Machine Extension
+         ,简称VMX，VMX有十个指令：VMPTRLD，VMPTRST，VMCLEAR，VMREAD，VMWRITE，VMCALL，VMLAUNCH
+         ，VMRESUME，VMXOFF,VMXON。</para>
+   <para>在虚拟化下有两种运行模式，一种是VMX root操作，一种是VMX非root操作，通常只有虚拟化控制
+         软件(virtual machine monitor,即VMM)可以运行在root操作模式下，运行在虚拟机之上的操作系
+         统运行在非root操作模式下。运行在虚拟机操作系统的软件通常叫做“guest 软件”。</para>
+   <para>要进入虚拟化模式，软件需要执行VMXON,然后调用VMM，VMM软件可以使用指令VMLAUNCH进入每个虚
+         拟机，也可以使用指令VMRESUME退出，如果VMM要关闭和退出虚拟化模式，则执行VMOFF指令。</para>
+   <para>下图试图描述上述步骤，及每个guest是如何彼此独立运行的。</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/vt-x.gif" width="6in" />
+        </imageobject>
+     </mediaobject>
+   <note>
+     <para>AMD的指令集叫做svm.</para>
+   </note>
+   <para>现在已经有了更多的指令集，如EPT，VT-d，SR-IOV等提高性能的技术。</para>
+   <sect2>
+      <title>在Linux系统下查看CPU是否支持VT技术</title>
+      <para>打开终端执行下面命令：</para>
+      <programlisting>
+       egrep ‘(vmx|svm)’ /proc/cpuinfo
+      </programlisting>
+      <para>如果有输出，则说明您的机器支持虚拟化技术。</para>
+      <programlisting>
+       <![CDATA[
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm 3dnowext 3dnow constant_tsc rep_good nopl nonstop_tsc extd_apicid pni monitor cx16 popcnt lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a 3dnowprefetch osvw ibs skinit wdt nodeid_msr hw_pstate npt lbrv svm_lock nrip_save
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm 3dnowext 3dnow constant_tsc rep_good nopl nonstop_tsc extd_apicid pni monitor cx16 popcnt lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a 3dnowprefetch osvw ibs skinit wdt nodeid_msr hw_pstate npt lbrv svm_lock nrip_save
+]]>
+      </programlisting>
+   </sect2> 
   </sect1>
 </section>

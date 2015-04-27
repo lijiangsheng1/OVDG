@@ -16,6 +16,19 @@
 </bibliomixed>
 
 <bibliodiv>
+  <title>来自互联网资料</title>
+  <bibliomixed>
+     <bibliomset relation='article'>
+       <title role='article'><ulink url="http://www.hardwaresecrets.com/article/Everything-You-Need-to-Know-About-the-Intel-Virtualization-Technology">Everything You Need to Know About the Intel Virtualization Technology</ulink></title>
+     </bibliomset>
+     <bibliomset relation='article'>
+       <title role='article'><ulink url="http://www.cs.usfca.edu/~cruse/cs686s07/">A special course at the University of San Francisco on Intel EM64T and VT Extensions</ulink></title>
+     </bibliomset>
+  </bibliomixed>
+</bibliodiv>
+
+
+<bibliodiv>
   <title>论文参考</title>
   <bibliomixed xreflabel="2003-xensosp">
     <authorgroup>
