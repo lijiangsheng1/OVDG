@@ -67,4 +67,22 @@
   </bibliomixed>
 
 </bibliodiv>
+
+<bibliodiv><title>QEMU论文</title>
+
+ <biblioentry>
+  <abbrev>usenix05</abbrev>
+  <authorgroup>
+    <author><firstname>Fabrice</firstname><surname>Bellard</surname></author>
+  </authorgroup>
+  <copyright><year>2005</year>
+             <holder>Fabrice Bellard</holder></copyright>
+  <publisher>
+    <publishername>FREENIX Track: 2005 USENIX Annual Technical Conference</publishername>
+  </publisher>
+  <title><ulink url="https://www.usenix.org/legacy/publications/library/proceedings//tech/freenix/full_papers/bellard/bellard.pdf">QEMU, a Fast and Portable Dynamic Translator</ulink></title>
+ </biblioentry>
+</bibliodiv>
+
+
 </bibliography>

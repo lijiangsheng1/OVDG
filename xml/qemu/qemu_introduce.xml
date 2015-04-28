@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="QEMU_introduce">
+  <title>QEMU介绍</title>
+  <para>用一句话来介绍QEMU的话，那就是：QEMU是一个通用的、开放源代码的计算机模拟器和虚拟器。
+        </para>
+  <para>当其作为模拟器时，QEMU可以在某种架构下运行其它架构的操作系统及其上的应用，比如在X86
+        平台运行ARM。这是通过动态翻译来完成的，性能差强人意。</para>
+  <para>QEMU可以用于一些Hypervisor如KVM和XEN,这些Hypervisor使用CPU扩展来完成虚拟化，当QEMU作
+        为虚拟器的时候，它可以在主机的CPU上直接执行客户操作系统上的程序，且接近本地的性能。
+        </para>
+  <para>QEMU也被移植到一些非常著名的项目，如Android SDK，VirtualBox等。</para>
+  <para>QEMU主要应用场景</para>
+  <itemizedlist mark='opencircle'>
+      <listitem><para>扩平台的开发环境/编译</para></listitem>
+      <listitem><para>虚拟化，用于设备模拟，如XEN HVM和KVM。</para></listitem>
+      <listitem><para>Android SDK的一部分，模拟器，在X86 PC环境运行ARM程序。</para></listitem>
+  </itemizedlist>
+  <sect1>
+     <title>QEMU支持的特性</title>  
+     <para>从模拟器的角度考虑，QEMU支持的特性实在是太多了，为了作为描述其特性的复杂，我们来看下
+           近来刚刚发布的版本2.3版本的<ulink url="http://wiki.qemu.org/ChangeLog/2.3">变更日志。
+           </ulink></para>
+     <sect2>
+       <title>系统模拟</title>
+       <sect3>
+          <title>命令行兼容性</title>
+           <itemizedlist mark='opencircle'>
+             <listitem><para>当socket*cores*threads和VCPU数量不匹配时，QEMU会取消启动。</para></listitem>
+           </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>将来不再兼容的变更</title>
+          <para>此处略去，欲访问详情，请访问
+                <ulink url="http://wiki.qemu.org/ChangeLog/2.3#Future_incompatible_changes">官网</ulink>
+                </para>
+       </sect3>
+       <sect3>
+          <title>ARM</title>
+           <itemizedlist mark='opencircle'>
+             <listitem><para>当semihosting模式激活，退出代码通过到操作系统。</para></listitem>
+             <listitem><para>新属性--semihosting-config</para></listitem>
+             <listitem><para>虚拟主板支持了fw_cfg设备。</para></listitem>
+             <listitem><para></para></listitem>
+             <listitem><para></para></listitem>
+             <listitem><para></para></listitem>
+             <listitem><para></para></listitem>
+           </itemizedlist>
+          
+             <sect4>
+                 <title>KVM</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+       </sect3>
+       <sect3>
+          <title>MIPS</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>PowerPC</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+             <sect4>
+                 <title>IBM(pSeries)</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>FreeScale(BookE)</title>
+             </sect4>
+             <sect4>
+                 <title>PReP</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+       </sect3>
+       <sect3>
+          <title>s390</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>SPARC</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>TriCore</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>x86</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+             <sect4>
+                 <title>KVM</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>XEN</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+       </sect3>
+       <sect3>
+          <title>设备模拟和分配</title>
+             <sect4>
+                 <title>ACPI</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>声卡</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>IDE</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>SCSI</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>TPM</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>VFIO</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+             <sect4>
+                 <title>VGA</title>
+                    <itemizedlist mark='opencircle'>
+                       <listitem><para></para></listitem>
+                    </itemizedlist>
+             </sect4>
+       </sect3>
+       <sect3>
+          <title>字符设备</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>图形用户接口</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>监视器</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>迁移</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+       <sect3>
+          <title>系统模拟下的块设备</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+       </sect3>
+     </sect2>
+     <sect2>
+       <title>块设备及其工具</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+     </sect2>  
+     <sect2>
+       <title>来宾代理</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+     </sect2>  
+     <sect2>
+       <title>用户模式模拟器</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+     </sect2>  
+     <sect2>
+       <title>构建依赖</title>
+             <itemizedlist mark='opencircle'>
+                  <listitem><para></para></listitem>
+             </itemizedlist>
+     </sect2>  
+     <para>版本2.3的变更记录，基本就勾勒出了QEMU目前所支持的特性，下面从所支持的模式来简单
+           概括一番。</para>
+     <para>QEMU通用特性：</para>
+     <itemizedlist mark='opencircle'>
+        <listitem><para>用户模式模拟器或是全系统模拟。</para></listitem>
+        <listitem><para>使用动态翻译达到接近本地代码的运行速度。</para></listitem>
+        <listitem><para>在X86,x86_64作为主机运行。</para></listitem>
+        <listitem><para>支持自我修改代码。</para></listitem>
+        <listitem><para>支持Precise exceptions</para></listitem>
+     </itemizedlist>
+     <para>QEMU用户模式模拟器特性：</para>
+     <itemizedlist mark='opencircle'>
+        <listitem><para>通用Linux系统调用转换，包括大多数的ioctl</para></listitem>
+        <listitem><para>clone()模拟使用本地CPU clone()以使用Linux的线程调度。</para></listitem>
+        <listitem><para>通过重新映射主机信号到目标信号，精准掌控信号。</para></listitem>
+     </itemizedlist>
+     <para>QEMU虚拟化特性：</para>
+     <itemizedlist mark='opencircle'>
+        <listitem><para>QEMU使用纯软件的MMU以保持最佳可移植性。</para></listitem>
+        <listitem><para>QEME可以选择性的使用内核的加速器，如KVM。加速器本地执行来宾代码，其它仍然
+                        由模拟器来完成。</para></listitem>
+        <listitem><para>模拟各种类型的外设，也可以穿透使用主机的设备。</para></listitem>
+        <listitem><para>即使主机只有单个CPU，也可实现对称多处理器的模拟。</para></listitem>
+     </itemizedlist>
+  </sect1>
+
+</section>

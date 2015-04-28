@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="qemu_history">
+  <title>QEMU简短历史 </title>
+  <para>在2003年，由著名的大神级任务
+        <ulink url="http://en.wikipedia.org/wiki/Fabrice_Bellard">Fabrice Bellard</ulink>
+        发起，随后交由社区，持续发展，直到今天蓬勃的发展态势。
+        </para>
+  <para>我们来看一张QEMU和Linux社区对比的趋势图：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/qemu_vs_linux_community.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+  <para>QEMU十多年来一直稳步的进行，尤其是伴随着2008年基于KVM的云计算以及Android智能移动设备
+        的流行，发展迅猛。</para>
+  <para>拥有超过40多名维护者，200多名代码贡献人员。每两年一个大版本，3个月一个小版本的周期
+        一直进行着。</para>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

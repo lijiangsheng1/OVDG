@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="qemu_arch">
+  <title>QEMU内部机制</title>
+  <para>限于个人能力，关于QEMU的部分，介绍三部分，其余请有心人自己探索，或者帮助作者完成。
+        </para>
+  <itemizedlist mark='opencircle'>
+       <listitem><para>动态翻译</para></listitem>
+       <listitem><para>QEMU和KVM如何协作？</para></listitem>
+       <listitem><para>virtio机制，即KVM的半虚拟化实现。</para></listitem>
+  </itemizedlist>
+  
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>
