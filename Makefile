@@ -9,7 +9,7 @@ pdf-clean:
 	rm *.out *.fo *.pdf 
 
 html-clean:
-	rm html
+	rm -rf html
 
 all-clean:
-	rm *.out *.fo *.pdf html
+	rm -rf *.out *.fo *.pdf html
