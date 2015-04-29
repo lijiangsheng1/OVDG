@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="libvirt_history">
+  <title>libvirt 背景</title>
+  <para>libvirt是红帽在2005年发起的一个项目，由<ulink url="">Daniel Veillard</ulink>领导。旨在
+        为 Xen 设计的一种管理 API，后来被扩展为为市面上所有的hypervisor,容器，模拟器，网络，存
+        储封装一套统一的接口，并绑定各种编程语言。
+        </para>
+  <para>libvirt发展到今天，已经是开源主流基础设施平台或IaaS云平台的基石，诸如OpenStack,oVirt均
+        使用libvirt作为其核心组件。</para>
+  <para>有心人在2012年时在youtube上是由gource生成了一段<ulink url="https://www.youtube.com/watch?v=TKynN8TwC0M">
+        动画</ulink>。libvirt 7年的代码提交，蛮有意思的。
+        </para>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

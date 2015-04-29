@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="libvirt_introduce">
+  <title>libvirt介绍</title>
+  <para>首先libvirt是一个开源的应用程序接口(API),还是一个守护进程，也提供管理工具。无论那样，
+        均是为虚拟化平台提供服务的，它可以用于管理KVM,XEN,VMware ESX,QEMU以及其他虚拟化技术。
+        </para>
+  <para>libvirt是什么？</para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>一套C语言应用程序接口</para></listitem>
+       <listitem><para>支持多种编程语言：python,ruby,php,java等。</para></listitem>
+       <listitem><para>支持AMQP/Qpid消息系统。</para></listitem>
+     </itemizedlist>
+  <para>libvirt支持的底层技术或项目</para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>KVM/Qemu Linux Hypervisor</para></listitem>
+       <listitem><para>Xen </para></listitem>
+       <listitem><para>LXC 容器</para></listitem>
+       <listitem><para>OpenVZ 容器</para></listitem>
+       <listitem><para>User Mode Linux</para></listitem>
+       <listitem><para>VirtualBox </para></listitem>
+       <listitem><para>VMware ESX和GSX</para></listitem>
+       <listitem><para>VMware workstation 和player</para></listitem>
+       <listitem><para>Microsoft Hyper-V</para></listitem>
+       <listitem><para>IBM PowerVM</para></listitem>
+       <listitem><para>Parallels</para></listitem>
+       <listitem><para>Bhyve</para></listitem>
+       <listitem><para>使用网桥、NAT、VEPA、VN-LINK的虚拟网络。</para></listitem>
+       <listitem><para>各种存储：SCSI,IDE,光纤，LVM，NFS,Ceph,及各种文件系统等。</para></listitem>
+     </itemizedlist>
+  <para>libvirt提供的一些功能</para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>使用TLS加密和x509凭证来做远程管理。</para></listitem>
+       <listitem><para>远程管理的认证支持kerberos和SASL。</para></listitem>
+       <listitem><para>本地访问控制使用PolicyKit。</para></listitem>
+       <listitem><para>使用Avahi multicast-DNS，实现无配置发现。</para></listitem>
+       <listitem><para>可管理虚拟机，虚拟网络，虚拟存储。</para></listitem>
+       <listitem><para>可移植的客户端API。</para></listitem>
+     </itemizedlist>
+</section>

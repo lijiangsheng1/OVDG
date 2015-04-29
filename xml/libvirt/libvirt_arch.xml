@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="libvirt_arch">
+  <title>libvirt架构</title>
+  <para>似乎本书的特色就是以图说话，libvirt也不例外：
+        </para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/libvirt_stack.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>
