@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="spice_introduce">
+  <title>SPICE 介绍 </title>
+  <para>SPICE是一个开放的远程计算解决方案，提供从客户端访问远程机器的显示和设备（例如，键盘，
+        鼠标，声卡等）。SPICE能够让用户体验甚至接近于和本地的机器交互体验，这对于客户端可节省
+        大量的CPU和GPU的任务。SPICE不仅能够适应本地局域网，也适应广域网，且不会影响用户体验。
+        访问的本地操作系统支持Linux,Windows和Android。
+        </para>
+  <para>SPICE项目目的是为虚拟化桌面设备提供一个完整的开源解决方案，SPICE项目不仅处理前端的事情，
+        还开发虚拟化的设备，前后端的交互则交由VDI来完成，VDI的可集成第三方组件。</para>
+  <para>下面的示意图说明了什么是VDI：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/vdi_schem.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+  <para>目前，项目主要还是集中在为QEMU的虚拟机提供高质量的访问体验。采用虚拟化来克服传统桌面虚拟
+        化，并打破技术障碍，着重于用户体验，基于此目的，红帽发布了用于SPICE客户端和服务器端通信的
+        SPICE远程计算协议，以及其它组件如QXL设备和驱动等。</para>
+  <para>下面的示意图说明了基于QEMU的SPICE解决的问题。</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/spice_schem.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

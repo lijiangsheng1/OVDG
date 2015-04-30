@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="spice_features">
+  <title>SPICE 的特性概述</title>
+  <para>本章打算从如下两种思路来描述特性:
+        </para>
+  <itemizedlist mark='opencircle'>
+     <listitem><para>从用户的角度描述功能特性。</para></listitem>
+     <listitem><para>从开发者角度来稍深入的按技术领域来区分的特性描述。</para></listitem>
+  </itemizedlist>
+  <sect1>
+     <title>功能描述</title>  
+     <para></para>
+     <itemizedlist mark='opencircle'>
+        <listitem><para>图形命令</para></listitem>
+        <listitem><para>视频流</para></listitem>
+        <listitem><para>图像压缩</para></listitem>
+        <listitem><para></para></listitem>
+        <listitem><para></para></listitem>
+        <listitem><para></para></listitem>
+        <listitem><para></para></listitem>
+        <listitem><para></para></listitem>
+     </itemizedlist>
+  </sect1>
+  <sect1>
+     <title>技术特定领域</title>  
+     <para> </para>
+     <sect2>
+        <title>图形命令</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>硬件增强</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>图像压缩</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>视频压缩</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>缓存</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>鼠标模式</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>多显示器</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>2路声卡和lip-sync</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>硬件游标</title>  
+        <para> </para>
+     </sect2>
+     <sect2>
+        <title>在线迁移</title>  
+        <para> </para>
+     </sect2>
+  </sect1>
+</section>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="spice_history">
+  <title>SPICE 历史和社区 </title>
+  <para> 这还得讲到Qumranet这家以色列的公司，在2007年以闭源的形式开发了SPICE，并发布了其
+         VDI产品和解决方案。红帽在2008年收购了Qumranet,并在2009年12月均定将代码以开源的方
+         式发布，将协议视为一种开放标准。
+        </para>
+  <para>SPICE的代码都是托管在freedesktop.org上的，社区活跃度堪忧，从
+        <ulink url="https://www.openhub.net/p/spice-space">openhub</ulink>上来看。有很多计
+       划中的特性还没有实现。</para>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="spice_arch">
+  <title>SPICE 架构 </title>
+  <para> 
+        </para>
+  <sect1>
+     <title>图形命令数据流</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>代理命令数据流</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>SPICE客户端</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>SPICE服务器端</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>SPICE协议</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>QXL设备</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>QXL来宾驱动</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>SPICE代理</title>  
+     <para> </para>
+  </sect1>
+  <sect1>
+     <title>VDIPort设备和驱动</title>  
+     <para> </para>
+  </sect1>
+
+</section>
