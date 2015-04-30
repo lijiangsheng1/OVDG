@@ -10,7 +10,7 @@
   <procedure>
     <title>加载模块</title>
     <step>
-     <para>加载kvm.o和vmx或svm</para>
+     <para>加载kvm.ko和kvm_intel.ko或kvm_amd.ko(vmx或svm)</para>
     </step>
     <step>
      <para>加载完成后，/dev/kvm就可以被用户空间访问。</para>
@@ -22,58 +22,88 @@
      </mediaobject>
   </procedure>
   <procedure>
-    <title>加载模块</title>
+    <title>打开/dev/kvm</title>
     <step>
-     <para></para>
+     <para>/dev/kvm是不可以在读取和写入的。</para>
     </step>
     <step>
-     <para></para>
+     <para>/dev/kvm拥有ioctl接口。</para>
     </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm2.png" width="6in" />
+        </imageobject>
+     </mediaobject>
   </procedure>
   <procedure>
-    <title>加载模块</title>
+    <title>调用kvm ioctl()</title>
     <step>
-     <para></para>
+     <para>调用KVM_GET_API_VERSION，检查版本。</para>
     </step>
     <step>
-     <para></para>
+     <para>调用KVM_CREATE_VM以创建虚拟机，它会返回一个kvm-vm的文件句柄。</para>
     </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm3.png" width="6in" />
+        </imageobject>
+     </mediaobject>
   </procedure>
   <procedure>
-    <title>加载模块</title>
+    <title>调用kvm和kvm-vm ioctl() （一）</title>
     <step>
-     <para></para>
+     <para>在kvm文件句柄中调用KVM_CHECK_EXTENSION。</para>
     </step>
     <step>
-     <para></para>
+     <para>在kvm-vm文件句柄中基于KVM_SET_TSS_ADDR设置tss的地址。</para>
     </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm4.png" width="6in" />
+        </imageobject>
+     </mediaobject>
   </procedure>
   <procedure>
-    <title>加载模块</title>
+    <title>调用kvm和kvm-vm ioctl() （二）</title>
     <step>
-     <para></para>
+     <para>在kvm文件句柄中调用KVM_CHECK_EXTENSION。</para>
     </step>
     <step>
-     <para></para>
+     <para>在kvm_vm文件句柄中设置KVM_SET_MEMORY_REGION。</para>
     </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm5.png" width="6in" />
+        </imageobject>
+     </mediaobject>
   </procedure>
   <procedure>
-    <title>加载模块</title>
+    <title>调用kvm和kvm-vm ioctl() （三）</title>
     <step>
-     <para></para>
+     <para>在kvm文件句柄中调用KVM_CHECK_EXTENSION。</para>
     </step>
     <step>
-     <para></para>
+     <para>在kvm_vm文件句柄中，让KVM_CREATE_IRQCHIP创建irqchip。</para>
     </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm6.png" width="6in" />
+        </imageobject>
+     </mediaobject>
   </procedure>
   <procedure>
-    <title>加载模块</title>
+    <title>创建vcpu</title>
     <step>
-     <para></para>
+     <para>在kvm_vm文件句柄中，调用KVM_CREATE_VCPU。</para>
     </step>
     <step>
-     <para></para>
+     <para>返回kvm_vcpu 文件句柄。</para>
     </step>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/init-kvm7.png" width="6in" />
+        </imageobject>
+     </mediaobject>
   </procedure>
 <!--  <sect1>
      <title></title>  
