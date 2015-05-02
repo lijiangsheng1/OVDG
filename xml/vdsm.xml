@@ -4,6 +4,7 @@
   <xi:include href="vdsm/vdsm_history.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_introduce.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_prerequisite.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_arch.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </chapter>

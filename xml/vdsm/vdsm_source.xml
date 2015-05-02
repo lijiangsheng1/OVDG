@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="vdsm_source">
+  <title>VDSM源代码目录分析</title>
+  <para>本章主要对VDSM源代码的目录结构、重要文件做一一描述。</para>
+  <para>在<xref linkend="vdsm_prerequisite"/>一节中，我们描述了开发环境的准备，现在可以下载
+        VDSM的源代码了:</para>
+      <programlisting>
+       <![CDATA[
+       git clone http://gerrit.ovirt.org/p/vdsm.git
+]]>
+      </programlisting>
+ <sect1>
+  <title>顶层源代码文件和目录介绍</title>
+  <para>在第一层目录中我们可以看到如下文件：</para>
+      <programlisting>
+       <![CDATA[
+   $ ls
+AUTHORS       build-aux  commit-template.txt  COPYING  init  Makefile.am  README         vdsm        vdsm_reg
+autobuild.sh  ChangeLog  configure.ac         debian   lib   NEWS         tests          vdsm_hooks  vdsm.spec.in
+autogen.sh    client     contrib              doc      m4    pylintrc     vds_bootstrap  vdsm_log    vdsm-tool
+]]>
+      </programlisting>
+  <note><para>VDSM共有94个目录，657个文件，所以笔者不可能每个都详细的谈到，绝大多数都是忽略，一
+              语代过的。若读者觉得那个有必要，请到github的项目主页上提交issue吧。</para></note>
+  <para>空文件：ChangeLog,NEWS，直接忽略。</para>
+  <para>AUTHORS：记录了VDSM项目的维护者和贡献者，这里不得不提到的是<ulink url="http://www.ocselected.org">
+        开放云精选社区</ulink>的jarod.W和huntxu。</para>
+  <para>autobuild.sh： 自动构建脚本。若不想分步使用automake的话，这个一次性会完成。</para>
+  <para>autogen.sh: autoreconf,主要是指定system参数后生成configure的prefix等参数，然后执行configure。</para>
+  <para>目录build-aux: 包含了生成版本信息的脚本。</para>
+  <para>目录client: 包含了VDSM客户端程序vdsclient的python程序。</para>
+  <para>commit-template.txt: git提交的模板。</para>
+  <para>configure.ac: 生成configure文件的模板文件，应该详细的读读此文件，作者在此仅就所依赖的Linux
+        系统组件作一简单描述:</para>
+  <para>所需要的Python模块：</para>
+    <itemizedlist mark='square'>
+       <listitem><para>argparse</para></listitem>
+       <listitem><para>cpopen</para></listitem>
+       <listitem><para>ethtool</para></listitem>
+       <listitem><para>libvirt：libvirt的python语言绑定。</para></listitem>
+       <listitem><para>netaddr</para></listitem>
+       <listitem><para>pthreading</para></listitem>
+       <listitem><para>pyinotify</para></listitem>
+       <listitem><para>selinux：SELinux编程接口python实现。</para></listitem>
+    </itemizedlist>
+  <para>所需要的linux系统组件：</para>
+    <itemizedlist mark='square'>
+       <listitem><para>blkid:查找/打印块设备的属性。</para></listitem>
+       <listitem><para>brctl:管理以太网网桥的工具。</para></listitem>
+       <listitem><para>dmidecode:是将计算机的DMI信息（也叫SMBIOS）dump出来，使之让人类可以
+                       看懂。</para></listitem>
+       <listitem><para>dmsetup: 相比与lvm命令的，更低级别的逻辑卷管理工具。</para></listitem>
+       <listitem><para>fuser:显示进程所使用的文件。</para></listitem>
+       <listitem><para>lsblk:列出系统所有块设备，也可以指定输出某块设备。</para></listitem>
+       <listitem><para>mountpoint:查看目录是否为挂载点。</para></listitem>
+       <listitem><para>multipath:使用device-mapper来管理多路径设备的工具。</para></listitem>
+       <listitem><para>ionice:设置或获取进程I/O调度类或优先级。</para></listitem>
+       <listitem><para>persist:</para></listitem>
+       <listitem><para>restorecon:恢复为默认的SELinux 安全上下文的文件。</para></listitem>
+       <listitem><para>saslpasswd2:设置一个用户的sasl密码。</para></listitem>
+       <listitem><para>setsid:在一个新的会话里运行程序。</para></listitem>
+       <listitem><para>tc:显示流量控制设置。</para></listitem>
+       <listitem><para>tune2fs:调整优化ext2/ext3/ext4文件系统参数。</para></listitem>
+       <listitem><para>udevadm:管理udev的工具。</para></listitem>
+       <listitem><para>unpersist</para></listitem>
+       <listitem><para>qemu-img:QEMU磁盘工具。</para></listitem>
+       <listitem><para>fence_io: 针对HP ilo设备的fence代理。</para></listitem>
+       <listitem><para>iscsiadm：一个iscsi命令行工具，可以发现和登录到iscsi target。访问和管理
+                       open-iscsi数据库。</para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+       <listitem><para></para></listitem>
+    </itemizedlist>
+       
+  <para>目录contrib:包含了两个简单的探测环境的python程序。</para>
+  <para>COPYING: GPLV2许可证协议，也是VDSM的开放源代码协议。</para>
+  <para>debian: pkg的打包脚本。</para>
+  <para>doc: VDSM文档目录，非常的简单，基本没说什么，sphinx文档。</para>
+  <para>目录init： sysv,systemd,upstart等的服务启动脚本。</para>
+  <para>目录lib: VDSM所用到库文件，抽象出来的VDSM本身，及jsonrpc等。</para>
+  <para>Makefile.am: Makefile的模板文件，整个的构建过程均在此定义。</para>
+  <para>pylintrc: 检查python代码的<ulink url="http://www.pylint.org/">pylint</ulink>的
+        配置文件。</para>
+  <para>目录tests: VDSM测试脚本,包括单元测试和功能测试。</para>
+  <para>vds_bootstrap: 安装vdsm的bootstrap python程序。</para>
+  <para>vdsm: vdsm核心程序，包括存储、网络、虚拟机、超级进程等等全在这里，这也是我们重点
+        分析的目录。</para>
+  <para>vdsm_hooks: VDSM社区所实现的hooks程序，如nestedvt，SRIOV等。</para>
+  <para>vdsm_logs: 远程查看VDSM主机的日志，支持高亮显示。</para>
+  <para>vdsm_reg：vdsm想ovirt-engine注册时用到的程序。分析此有助于理解vdsm和engine之间的通信。
+        </para>
+  <para>vdsm.spec.in: RPM spec的模板文件，用于将vdsm程序打包为rpm包。</para>
+  <para>目录vdsm_tool：包含了配置vdsm的命令行工具的源代码。</para>
+ </sect1>
+ <sect1>
+  <title>VDSM核心代码和目录介绍</title>
+  <para>在第一层目录中我们可以看到如下文件：</para>
+      <programlisting>
+       <![CDATA[
+$ ls
+addNetwork              get-conf-item     mk_sysprep_floppy.in  storage                    vdsm-logrotate
+alignmentScan.py        gluster           mom.conf.in           substitute_constants.py    vdsm-logrotate.conf.in
+API.py                  hooking.py        mom.d                 sudoers.vdsm.in            vdsm-modules-load.d.conf
+blkid.py                hooks.py          momIF.py              supervdsm.py               vdsm-restore-net-config
+bonding-defaults.json   kaxmlrpclib.py    network               supervdsmServer            vdsm.rwtab.in
+caps.py                 ksm.py            numaUtils.py          svdsm.logger.conf.in       vdsm-store-net-config.in
+clientIF.py             libvirt_password  ovirt_functions.sh    utils.pyc                  vdsm-sysctl.conf
+clientIF.pyc            limits.conf       parted_utils.py       vdsm                       virt
+debugPluginClient.py    logger.conf.in    ppc64HardwareInfo.py  vdsmd.8.in                 vmBootExample.conf
+delNetwork              logUtils.py       protocoldetector.py   vdsmDebugPlugin.py         vmConfExample.conf
+dmidecodeUtil.py        lsblk.py          rpc                   vdsm-gencerts.sh.in        vm.pyc
+doc                     Makefile.am       set-conf-item         vdsm-libvirt-access.pkla   withCDExample.conf
+dsaversion.py.in        md_utils.py       sos                   vdsm-libvirt-access.rules  write-net-config
+dumpStorageTable.py.in  mkimage.py        sourceRoute.sh        vdsm-libvirt-logrotate
+]]>
+      </programlisting>
+  <para></para>
+   <sect2>
+     <title>存储(storage目录)</title>
+     <para></para>
+     <para></para>
+   </sect2>
+   <sect2>
+     <title>网络(network目录)</title>
+     <para></para>
+     <para></para>
+   </sect2>
+   <sect2>
+     <title>虚拟机(virt目录)</title>
+     <para></para>
+     <para></para>
+   </sect2>
+   <sect2>
+     <title>glusterfs</title>
+     <para></para>
+     <para></para>
+   </sect2>
+   <sect2>
+     <title>rpc</title>
+     <para></para>
+     <para></para>
+   </sect2>
+   <sect2>
+     <title>mom</title>
+     <para></para>
+     <para></para>
+   </sect2>
+   <sect2>
+     <title>rpc</title>
+     <para></para>
+     <para></para>
+   </sect2>
+ </sect1>
+</section>
