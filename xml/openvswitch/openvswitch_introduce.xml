@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="openvswitch_introduce">
+  <title>OpenvSwitch 介绍</title>
+  <para>OpenVSwitch主要的目标是为硬件虚拟化环境提供一交换堆栈，支持多种计算机网络的标准和
+        协议。
+        </para>
+  <para>项目的源代码在Apache许可证2.0许可下发布。</para>
+  <para>作为一款软件实现的虚拟多层网络交换机，OpenVSwitch被设计为通过可编程扩展以实现高效
+        网络自动化，其支持标准的管理接口和协议，如 NetFlow, sFlow, SPAN, RSPAN, CLI, LACP
+        以及802.1ag 等等，另外，OpenVSwitch也被设计为支持跨多个物理服务器的透明的分布式系
+        统，商业产品类似的有Cisco Nexus 1000V。</para>
+  <para>OpenVSwitch 可以作为一个基于软件实现的交换机，为Hypervisor管理下的虚拟机的服务；也
+        可以作为专有硬件交换机的控制堆栈。它已经被移植到多个虚拟化平台和交换机芯片中。
+        </para>
+  <para>XenServer从6.0开始，将OpenVSwitch设置为它的默认，Xen云平台也支持OpenVSwitch,它也支
+        持Linux KVM,Proxmox VE，VirualBox。OpenVSwitch也被集成到云计算软件平台和虚拟化管理
+        平台，如oVirt,OpenStack,OpenQRM,OpenNebula。</para>
+  <para>在2012年3月18日的Linux 3.3发布时，宣布OpenVSwitch进入内核，且多数发行版都支持。在
+        2014年1月，FreeBSD和NetBSD也成功的移植了OpenVSwitch,尤其是NetBSD,其完全在用户态空
+        间实现的。</para>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

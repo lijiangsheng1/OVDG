@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="openvswitch_history">
+  <title>OpenvSwitch 简短历史</title>
+  <para>讲到OpenVSwitch的历史，不得不从其三位创始人开始说起，
+        <ulink url="http://yuba.stanford.edu/~casado/">Martin Casado</ulink>,
+        <ulink url="http://en.wikipedia.org/wiki/Nick_McKeown">Nick McKeown</ulink>,
+        <ulink url="http://en.wikipedia.org/wiki/Scott_Shenker">Scott Shenker</ulink>,
+        </para>
+  <para>Casado当年还是斯坦福教授McKeown的学生的时候，其读博士时研究的领域就是SDN和OpenFlow,
+        在2007年三人一起创建了公司Nicira,这就是OpenVSwitch的诞生的地方，这家公司开发商业的网络
+        产品，如OpenFlow。在2009年7月8号，以Apache2.0的开源协议将OpenVSwitch开放给了全世界。但
+        是在2012年7月23号VMware收购了Nicira，其产品也变为了VMware NSX系列。McKeown和Shenker又创
+        办了Open Networking Foundation 非盈利性组织，继续推动着SDN运动。</para>
+  <para>OpenVSwitch由于开放源代码，得到了很多大的IT公司的支持，如Cisco,Citrix,Google,HP,BigSwitch
+        ,RedHat等，截至本书的写作，版本已经发展到2.3.1,并延伸了一些高质量的子项目，如OVN。</para>
+  <para>项目仓库已经迁移到<ulink url="https://github.com/openvswitch/ovs">github</ulink></para>
+
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>

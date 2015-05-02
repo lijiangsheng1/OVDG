@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="openvswitch_features">
+  <title>OpenvSwitch 特性简介</title>
+  <para>绝大部分的实现是由独立于平台的C语言实现的，所以可轻松移植到其它平台。目前版本的
+        OpenVSwitch支持如下面列出的特性:
+        </para>
+   <itemizedlist mark='opencircle'>
+      <listitem><para>标准的802.1Q的VLAN模式，基于trunk和访问端口。</para></listitem>
+      <listitem><para>支持网卡绑定，支持上游交换机的LCAP。</para></listitem>
+      <listitem><para>NetFlow, sFlow(R), 以及mirroring for increased visibility</para></listitem>
+      <listitem><para>QoS配置，规则的增加。</para></listitem>
+      <listitem><para>Geneve, GRE, GRE over IPSEC, VXLAN, 以及 LISP tunneling</para></listitem>
+      <listitem><para>802.1ag连接错误管理。</para></listitem>
+      <listitem><para>OpenFlow1.0及其后续版本的实现。</para></listitem>
+      <listitem><para>基于C和Python绑定的事务配置数据库。</para></listitem>
+      <listitem><para>利用Linux内核模式的高性能转发。</para></listitem>
+   </itemizedlist>
+</section>

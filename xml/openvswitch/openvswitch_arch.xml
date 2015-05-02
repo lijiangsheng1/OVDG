@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="openvswitch_arch">
+  <title>OpenvSwitch 架构</title>
+  <para>OpenVSwitch 作为跨服务器的虚拟网络交换机，透明的分布在多个物理服务器中。
+        </para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Distributed_Open_vSwitch_instance.svg" width="6in" />
+        </imageobject>
+     </mediaobject>
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>
