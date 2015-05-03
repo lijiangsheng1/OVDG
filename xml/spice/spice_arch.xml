@@ -5,23 +5,87 @@
   version="5.0"
   xml:id="spice_arch">
   <title>SPICE 架构 </title>
-  <para> 
+  <para>SPICE的主要组件有：Spice协议 ，Spice服务端，Spice客户端。和Spice相关的组件有：
+        QXL设备以及来宾操作系统中的QXL驱动。 
         </para>
   <sect1>
      <title>图形命令数据流</title>  
-     <para> </para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/spice_arch1.png" width="6in" />
+        </imageobject>b
+     </mediaobject>
+     <para>上图中所展示的是基本的Spice架构，以及图形命令的来宾到客户端的数据流示意图，
+           且是使用QEMU作为例子，此处的QEMU使用到libspice，libspice也可以用于任何其它
+           兼容的主机应用。图形命令数据流开始于用户应用请求操作系统的图形引擎(X或GDI)
+           以执行渲染操作。图形引擎传送命令到QXL驱动，QXL驱动会将操作系统命令转换为QXL
+           命令，然后将之推送到一个命令环中，命令环会引起设备内存的上升，libspice此时会
+           从环中拉到命令，且会将之添加到图形命令树中，图形命令树包含了命令的集合，这些
+           命令的执行会重现显示内容，此树是用于libspice通过删除隐藏其它命令的命令的命令
+           传输优化到客户端。命令树也会用于视频流发现，libspice也会维护一个发送到客户端
+           的命令队列，为的是更新显示内容。当命令被从队列中拉出传输到客户端时，会翻译为
+           Spice协议的消息。命令可以从树中被移除，也可以从队列中移除，当libspice不再需要
+           这些命令的时候，它会推送它们到设备释放环中，驱动使用此环以释放命令资源。当客户
+           端接收到一个图形命令，它使用这命令来更新显示。 </para>
   </sect1>
   <sect1>
      <title>代理命令数据流</title>  
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/spice_arch2.png" width="6in" />
+        </imageobject>
+     </mediaobject>
      <para> </para>
   </sect1>
   <sect1>
      <title>SPICE客户端</title>  
-     <para> </para>
+     <para>Spice的跨平台(Linux和Windows)客户端是面向最终用户的接口。 </para>
+     <sect2>
+          <title>客户端基础数据结构</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="../media/spice_arch3.png" width="6in" />
+            </imageobject>
+          </mediaobject>
+     </sect2>
+     <sect2>
+          <title>客户端类</title>
+          <para></para>
+          <sect3>
+              <title>频道</title>
+              <para></para>
+          </sect3>
+          <sect3>
+              <title>屏幕和窗口</title>
+              <para></para>
+          </sect3>
+     </sect2>
   </sect1>
   <sect1>
      <title>SPICE服务器端</title>  
      <para> </para>
+     <sect2>
+          <title></title>
+          <para></para>
+          <mediaobject>
+             <imageobject>
+                <imagedata fileref="../media/spice_arch4.png" width="6in" />
+             </imageobject>
+          </mediaobject>
+          <sect3>
+              <title>读服务</title>
+              <para></para>
+          </sect3>
+          <sect3>
+              <title>图形子系统</title>
+              <para></para>
+              <mediaobject>
+                 <imageobject>
+                     <imagedata fileref="../media/spice_arch5.png" width="6in" />
+                 </imageobject>
+              </mediaobject>
+          </sect3>
+     </sect2>
   </sect1>
   <sect1>
      <title>SPICE协议</title>  
