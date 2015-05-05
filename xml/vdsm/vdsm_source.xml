@@ -38,13 +38,13 @@ autogen.sh    client     contrib              doc      m4    pylintrc     vds_bo
         系统组件作一简单描述:</para>
   <para>所需要的Python模块：</para>
     <itemizedlist mark='square'>
-       <listitem><para>argparse</para></listitem>
-       <listitem><para>cpopen</para></listitem>
-       <listitem><para>ethtool</para></listitem>
+       <listitem><para>argparse</para>撰写用户友好的命令行程序的必备。</listitem>
+       <listitem><para>cpopen</para>简单安全的创建子进程。</listitem>
+       <listitem><para>ethtool</para>ethtool命令行程序python的实现。</listitem>
        <listitem><para>libvirt：libvirt的python语言绑定。</para></listitem>
-       <listitem><para>netaddr</para></listitem>
-       <listitem><para>pthreading</para></listitem>
-       <listitem><para>pyinotify</para></listitem>
+       <listitem><para>netaddr</para>python操作IPV4,IPV6,MAC等地址的程序库。</listitem>
+       <listitem><para>pthreading</para>python的线程库。</listitem>
+       <listitem><para>pyinotify</para>linux文件系统事件监控。</listitem>
        <listitem><para>selinux：SELinux编程接口python实现。</para></listitem>
     </itemizedlist>
   <para>所需要的linux系统组件：</para>
@@ -71,38 +71,6 @@ autogen.sh    client     contrib              doc      m4    pylintrc     vds_bo
        <listitem><para>fence_io: 针对HP ilo设备的fence代理。</para></listitem>
        <listitem><para>iscsiadm：一个iscsi命令行工具，可以发现和登录到iscsi target。访问和管理
                        open-iscsi数据库。</para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
-       <listitem><para></para></listitem>
        <listitem><para></para></listitem>
     </itemizedlist>
        
@@ -148,41 +116,224 @@ dsaversion.py.in        md_utils.py       sos                   vdsm-libvirt-acc
 dumpStorageTable.py.in  mkimage.py        sourceRoute.sh        vdsm-libvirt-logrotate
 ]]>
       </programlisting>
-  <para></para>
-   <sect2>
+  <para>addNetwork: 将当前主机的网络设备加入到可用VDSM来管理的bash脚本。支持网卡、网桥、绑定
+        、VLANid等设备。</para>
+  <para>alignmentScan.py: 调用程序virt-alignment-scan，用来校准虚拟磁盘偏移。</para>
+  <para>API.py：对外抛出的应用程序接口。可完成基本的如虚拟机的创建、停止等操作。</para>
+  <para>blkid.py: 扫描出当前系统的块设备UUID。</para>
+  <para>bonding-defaults.json:网卡7种模式的一些属性定义，json格式。</para>
+  <para>caps.py:收集主机的信息，如操作系统版本，各个组件的版本，CPU,内存等相关信息等。</para>
+  <para>clientIF.py:VDSM客户端接口，为VDSM抛出jsonrpc和xmlrpc功能。</para>
+  <para>debugPluginClient.py: 基于python multiprocessing.manager实现的用于调试的程序。</para>
+  <para>delNetwork: 对应于addNetwork，即将网络设备删除，VDSM不再管理。</para>
+  <para>dmidecodeUtil.py: 使用dmicecode获得系统硬件信息，尤其是系统uuid。</para>
+  <para>目录doc：用于构建vdsm文档的工具。</para>
+  <para>dsaversion.py.in: 提供了DSA软件版本信息。</para>
+  <para>dumpStorageTable.py.in: 获取ovf存储信息。</para>
+  <para>get-conf-item: 从终端脚本获得vdsm配置信息。</para>
+  <para>目录gluster: 管理gluster文件系统。详见：<xref linkend="vdsm_source_gluster"/></para>
+  <para>hooking.py: 撰写hooks时侯比较有用的工具。</para>
+  <para>hooks.py: 定义hooks的框架。</para>
+  <para>kaxmlrpclib.py: 定义xmlrpclib有了keep-alive的能力。</para>
+  <para>libvirt_password: 定义libvirt密码的明文字符串。</para>
+  <para>limits.conf: 定义了vdsm用户的文件限制，bash。</para>
+  <para>logger.conf.in: vdsm rsyslog的配置文件。</para>
+  <para>logUtils.py：vdsm日志处理。</para>
+  <para>mkimage.py: 创建软盘和ISO的镜像，用于windows启动时驱动安装，如virtio-storage。</para>
+  <para>mk_sysprep_floppy.in: 创建windows系统sysprep.inf的软盘文件。</para>
+  <para>mom.conf.in: mom，即ovirt内存气球机制的实现，其配置文件。</para>
+  <para>目录mom.d: mom的规则文件。详见:<xref linkend="vdsm_source_momd"/></para>
+  <para>momIF.py: mom接口实现。</para>
+  <para>目录network: VDMS网络管理的实现，详见<xref linkend="vdsm_source_network"/></para>
+  <para>numaUtils.py: vcpu绑定物理CPU，实现NUMA。</para>
+  <para>ovirt_functions.sh: 判断节点是否是ovirt node或rhev node。</para>
+  <para>parted_utils.py: 磁盘分区工具parted工具。</para>
+  <para>ppc64HardwareInfo.py: 获得ppc64为硬件的信息。</para>
+  <para>protocoldetector.py: 实现在单个端口下支持多个协议。</para>
+  <para>目录rpc:VDSM rpc实现，支持xml和json格式，详见<xref linkend="vdsm_source_rpc"/></para>
+  <para>set-conf-item: 从终端shell下配置vdsm配置文件。</para>
+  <para>目录sos：收集系统信息，并保存到/var/run/vdsm目录下。</para>
+  <para>sourceRoute.sh: 获得系统源路由的脚本。</para>
+  <para>目录storage: VDSM管理存储的主要实现。详见<xref linkend="vdsm_source_storage"/></para>
+  <para>sudoers.vdsm.in: vdsm用户的sudoer配置文件，可以执行的一些超级用户的程序。</para>
+  <para>supervdsm.py: vdsm自我进程管理的实现，多线程并封装为一代理。</para>
+  <para>supervdsmServer: supervdsm的守护进程实现。</para>
+  <para>svdsm.logger.conf.in: supervdsm的日志配置。</para>
+  <para>v2v.py: 当系统导入一个虚拟机的时候，就启动一个virt-v2v的进程。</para>
+  <para>vdsm: VDSM的入口程序。</para>
+  <para>vdsmd.8.in: VDSM的在线帮助文档。</para>
+  <para>vdsmDebugPlugin.py: 调试使用的插件。</para>
+  <para>vdsm-gencerts.sh.in:生成vdsm证书的脚本。</para>
+  <para>vdsm-libvirt-access.pkla: 访问libvirt的pk配置。</para>
+  <para>vdsm-libvirt-access.rules: 访问libvirt的权限规则。</para>
+  <para>vdsm-logrotate: vdsm日志的轮循实现，使用logretate。</para>
+  <para>vdsm-logrotate.conf.in: vdsm日志的轮循配置文件。</para>
+  <para>vdsm-modules-load.d.conf: vdsm所需要加载的内核模块。</para>
+  <para>vdsm-restore-net-config: 重新载入网络配置文件。</para>
+  <para>vdsm.rwtab.in: vdsm的读写列表。</para>
+  <para>vdsm-store-net-config.in： 网络配置文件的保存实现。</para>
+  <para>vdsm-sysctl.conf: vdsm的sysctl配置要求。</para>
+  <para>目录virt: 虚拟机生命周期管理的实现：详见:<xref linkend="vdsm_source_virt"/></para>
+  <para>*Example.conf文件：主要用于vdsclient启动虚拟机使用，实例而已,不必细究。</para>
+   <sect2 id ="vdsm_source_storage">
      <title>存储(storage目录)</title>
-     <para></para>
-     <para></para>
+      <programlisting>
+       <![CDATA[
+blockSD.py       fuser.py          iscsi.py           protect               storageServer.py
+blockVolume.py   glusterSD.py      localFsSD.py       remoteFileHandler.py  sync.py
+clusterlock.py   glusterVolume.py  lvm.env.in         resourceFactories.py  taskManager.py
+curl-img-wrap    hba.py            lvm.py             resourceManager.py    task.py
+curlImgWrap.py   hsm.py            Makefile.am        sdc.py                threadLocal.py
+devicemapper.py  hsm.pyc           misc.py            sd.py                 threadPool.py
+dispatcher.py    image.py          monitor.py         securable.py          vdsm_lvm_rules.template.in
+dispatcher.pyc   imageRepository   mount.py           spbackends.py         volume.py
+fc-scan          imageSharing.py   multipath.py       sp.py
+fileSD.py        __init__.py       nfsSD.py           storageConstants.py
+fileUtils.py     __init__.pyc      outOfProcess.py    storage_exception.py
+fileVolume.py    iscsiadm.py       persistentDict.py  storage_mailbox.py
+]]>
+      </programlisting>
+     <para>blockSD.py: 块存储域的实现。逻辑卷</para>
+     <para>blokcVolume.py: 块存储卷的实现。</para>
+     <para>clusterlock.py: 基于SANlock的存储管理实现。</para>
+     <para>curl-img-wrap: 针对使用curl来上传/下载镜像的curl改进，以及对镜像压缩等的封装。</para>
+     <para>curlImgWrap.py: 调用curl-img-wrap的python程序。 </para>
+     <para>devicemapper.py: 根据/dev/mapper下的内容，获取信息。</para>
+     <para>dispatcher.py: 存储的调度实现。</para>
+     <para>fc-scan: 扫描出光纤存储的信息，获得lun。</para>
+     <para>fileSD.py: 文件存储域的实现。</para>
+     <para>fileUtils.py: NFS工具。</para>
+     <para>fileVolume.py: 基于文件系统的虚拟机磁盘卷的实现。</para>
+     <para>fuser.py: 可执行fuser命令的python封装。</para>
+     <para>glusterSD.py: glusterfs作为文件存储域的实现。</para>
+     <para>glusterVolume.py: 基于glusterfs文件系统的虚拟机磁盘卷的实现</para>
+     <para>hba.py: 收集HBA卡的信息。</para>
+     <para>hsm.py: 主机存储管理器的实现。</para>
+     <para>image.py: 虚拟机镜像管理。</para>
+     <para>目录imageRepository:镜像仓库。</para>
+     <para>imageSharing.py: 镜像分享实现。</para>
+     <para>iscsiadm.py：linux下iscsi管理程序iscsiadm的封装。</para>
+     <para>iscsi.py: iscsiadm的辅助程序，直接扫描文件获取信息。</para>
+     <para>localFsSD.py: 本地文件作为存储池的实现。</para>
+     <para>lvm.env.in: lvm环境变量。</para>
+     <para>lvm.py: linux下lvm命令行的python封装。</para>
+     <para>misc.py： 各种存储杂项实现。</para>
+     <para>monitory.py: 存储池监测实现。</para>
+     <para>mount.py: linux命令行程序mount的封装。</para>
+     <para>multipath.py: 帮助multipath守护进程。</para>
+     <para>nfsSD.py: NFS文件系统存储域的实现</para>
+     <para>outOfProcess.py: ioprocess。</para>
+     <para>persistentDict.py: 提供实现了验证和确认功能的通用类。</para>
+     <para>目录protect: 安全释放和spm的守护进程管理。</para>
+     <para>resourceManager.py: 资源管理实现。</para>
+     <para>sdc.py: 缓存的实现。</para>
+     <para>sd.py: 存储域的父类。</para>
+     <para>securable.py: 程序本身的安全方法探测。</para>
+     <para>sp.py: 定义了存储池的类。</para>
+     <para>storageConstants.py: 常量定义。</para>
+     <para>storage_exception.py: 关于存储的异常的定义。</para>
+     <para>storage_mialbox.py: 邮箱机制的定义。</para>
+     <para>storageServer.py: 存储服务器的连接/为连接，挂载等的定义。</para>
+     <para>sync.py： 异步的定义。</para>
+     <para>taskManager.py: 任务管理。</para>
+     <para>task.py: 关于任务的定义。</para>
+     <para>threadLocal.py:就是python的线程库。</para>
+     <para>threadPool.py: 定义了线程池的概念。</para>
+     <para>vdsm_lvm_rules.template.in： udev的关于生成lvm块设备配置文件。</para>
+     <para>volume.py: 虚拟机卷的父类。</para>
    </sect2>
-   <sect2>
+   <sect2 id="vdsm_source_network">
      <title>网络(network目录)</title>
-     <para></para>
-     <para></para>
+      <programlisting>
+       <![CDATA[
+api.py  configurators  errors.py  __init__.py  Makefile.am  models.py  sourceroute.py  sourceroutethread.py  tc
+]]>
+      </programlisting>
+     <para>api.py: python实现的管理网络的应用程序接口。</para>
+     <para>目录configurators: 独立于Linux系统提供的网络工具的实现。</para>
+     <para>errors.py: 定义了错误抛出代码。</para>
+     <para>models.py: 网络设备类型定义。</para>
+     <para>sourceroute.py: 源路由实现。</para>
+     <para>sourceroutethread.py: 掌控DHClient获得的路由。</para>
+     <para>目录tc: 流量控制的实现，即qos</para>
    </sect2>
-   <sect2>
+   <sect2 id="vdsm_source_virt">
      <title>虚拟机(virt目录)</title>
-     <para></para>
-     <para></para>
+      <programlisting>
+       <![CDATA[
+$ ls virt
+domain_descriptor.py  libvirt-hook.sh  periodic.py  vmchannels.py    vmpowerdown.py  vmstatus.py
+guestagent.py         Makefile.am      sampling.py  vmdevices        vm.py           vmtune.py
+__init__.py           migration.py     utils.py     vmexitreason.py  vmstats.py      vmxml.py
+]]>
+      </programlisting>
+     <para>domain_descriptor.py: xml domain解析器。</para>
+     <para>guestagent.py: 用于读取来宾操作系统代理发来的信息。</para>
+     <para>libvirt-hook.sh: 用于临时解决一些libvirt出现的问题。</para>
+     <para>migration.py: 处理在线迁移的问题，偏和engine打交道。</para>
+     <para>periodic.py: 定期维护和虚拟机的簿记。</para>
+     <para>sampling.py: 虚拟机和主机的状态采样。</para>
+     <para>utils.py: 一些关于处理虚拟机的工具。</para>
+     <para>vmchannels.py: 定义和来宾操作系统代理的管道设备。</para>
+     <para>目录vmdevices: 定义了libvirt的外围设备描述。显卡、网卡、磁盘等。</para>
+     <para>vmexitreason.py: 定义了vm退出的原因，便于人类阅读。</para>
+     <para>vmpowerdown.py: 定义了关闭和重启虚拟机的类，主要是通过来宾操作系统代理实现。</para>
+     <para>vm.py: 虚拟机定义及生命周期管理。</para>
+     <para>vmstats.py: 虚拟机使用负载等信息收集。</para>
+     <para>vmstatus.py: 定义了虚拟机的状态：如关闭、启动等。</para>
+     <para>vmtune.py: 调整io的接口。</para>
+     <para>vmxml.py: 定义libvirt所用到的虚拟机xml格式等。</para>
    </sect2>
-   <sect2>
+   <sect2 id="vdsm_source_gluster">
      <title>glusterfs</title>
-     <para></para>
-     <para></para>
+      <programlisting>
+       <![CDATA[
+$ ls
+api.py         cli.py        fstab.py  hooks.py        __init__.py  services.py    tasks.py
+apiwrapper.py  exception.py  gfapi.py  hostname.py.in  Makefile.am  storagedev.py
+]]>
+      </programlisting>
+     <para>api.py: vdsm的glusterfs接口。</para>
+     <para>apiwrapper.py: 再次封装给vdsm其他接口调用。</para>
+     <para>cli.py: 对命令行程序gluster的再次封装。</para>
+     <para>exception.py: 异常抛出的定义。</para>
+     <para>fstab.py: 将挂载相关永久写入/etc/fstab。</para>
+     <para>gfapi.py: gluser状态相关。</para>
+     <para>hooks.py: 关于gluserfs相关的接受vdsm hooks的机制。</para>
+     <para>hostname.py.in: 获取FQDN主机名的方法。</para>
+     <para>services.py: 对外的服务。</para>
+     <para>tasks.py: 关于处理gluster文件系统相关的任务队列。</para>
+     <para>storagedev.py：处理块设备当作glusterfs的挂载点。</para>
    </sect2>
-   <sect2>
+   <sect2 id="vdsm_source_rpc">
      <title>rpc</title>
-     <para></para>
-     <para></para>
+      <programlisting>
+       <![CDATA[
+BindingJsonRpc.py  Bridge.py    Makefile.am        vdsmapi-gluster-schema.json  vdsmapi-schema.json
+BindingXMLRPC.py   __init__.py  process-schema.py  vdsmapi.py
+]]>
+      </programlisting>
+     <para>BindingJsonRpc.py: yajsonrpc服务器实现。</para>
+     <para>BindingXMLRPC.py: xml-rpc服务器实现。</para>
+     <para>Bridge.py: 接受来自外部请求的核心程序。</para>
+     <para>process-schema.py:解析schema格式的文件。</para>
+     <para>vdsmapi-gluster-schema.json：VDSM关于gluster的json格式定义。</para>
+     <para>vdsmapi.py: 应用程序接口实现。</para>
+     <para>vdsmapi-schema.json: VDSM的json格式定义。</para>
    </sect2>
-   <sect2>
-     <title>mom</title>
-     <para></para>
-     <para></para>
-   </sect2>
-   <sect2>
-     <title>rpc</title>
-     <para></para>
-     <para></para>
+   <sect2 id="vdsm_source_momd">
+     <title>mom.d</title>
+      <programlisting>
+       <![CDATA[
+$ ls
+00-defines.policy  01-parameters.policy  02-balloon.policy  03-ksm.policy  04-cputune.policy
+]]>
+      </programlisting>
+     <para>00-defines.policy:定义了一些常量，由setMOMPolicyParameters来接收并轻松处理。</para>
+     <para>01-parameters.policy:空白。</para>
+     <para>02-balloon.policy：定义了关于气球驱动的一些规则。</para>
+     <para>03-ksm.policy:定义ksm生效的一些规则，有常量，也有自适应环境的。</para>
+     <para>04-cputune.policy：定义了cpu调整的一些规则，有常量，也有自适应环境的。</para>
    </sect2>
  </sect1>
 </section>
