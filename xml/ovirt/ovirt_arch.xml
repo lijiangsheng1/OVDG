@@ -69,41 +69,98 @@
      <para></para>
    <sect2>
      <title>Engine</title>
-     <para>Engine具有的一些功能： </para>
+     <para>Engine具有的一些功能： </para>i
      <orderedlist numeration="arabic">
          <listitem><para>虚拟机生命周期管理</para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
-         <listitem><para></para></listitem>
+         <listitem><para>实现了AAA的插件机制，可以使用如LDAP，来进行身份认证。</para></listitem>
+         <listitem><para>网络管理</para></listitem>
+         <listitem><para>存储管理</para></listitem>
+         <listitem><para>虚拟机高可用，应用高可用。</para></listitem>
+         <listitem><para>集群内主机间的虚拟机在线迁移。</para></listitem>
+         <listitem><para>系统调度，基于使用率和策略的负载均衡。</para></listitem>
+         <listitem><para>节能：在非高峰期将所有负载集中。</para></listitem>
+         <listitem><para>主机维护，在计划内的宕机/升级中，主机可置为维护模式，虚拟机毋须停机。</para></listitem>
+         <listitem><para>镜像管理，基于模板的配置，thin provison以及快照。</para></listitem>
+         <listitem><para>监控，实时收集系统信息，网络、存储等。</para></listitem>
+         <listitem><para>导入/导出虚拟机，支持OVF标准。</para></listitem>
      </orderedlist>
+     <para>下图按照功能，将engine做了模块化的表达：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Engine-arch.png" width="6in" />
+        </imageobject>
+     </mediaobject>
    </sect2>
    <sect2>
      <title>Engine-core architecture</title>
-     <para> </para>
+     <para>下图是以java EJB的实现来表述engine的运行原理。已经深入到代码模块。 </para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Engine-arch2.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <para>engine的EJB主要有：</para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>DB Broker: 管理所有与关系型数据库的操作。</para></listitem>
+       <listitem><para>VDS Broker: 负责所有与VDSM交互的操作。</para></listitem>
+       <listitem><para>LDAP Broker: 弃用，使用AAA模块。</para></listitem>
+       <listitem><para>Backend Bean： 单例Bean,负责运行不同实体的指令、查询和监控。</para></listitem>
+     </itemizedlist>
    </sect2>
    <sect2>
-     <title>Host Agent(<link linkend="vdsm">VDSM</link>)</title>
-     <para> </para>
-   </sect2>
-   <sect2>
-     <title>Hooks</title>
-     <para> </para>
+     <title>主机代理VDSM</title>
+     <para>详情请到章节<xref linkend="vdsm_arch"/>。</para>
+     <para>针对系统管理员非常有用的工具hooks,请到<xref linkend="vdsm_hooks"/>一探究竟。</para>
    </sect2>
    <sect2>
      <title>MoM</title>
-     <para> </para>
+     <para>VDSM是和MoM集成在一起的。MOM配置了策略。这些策略的使用者可以微调
+           主机的高内存过量使用或安全操作。为了控制它的mom实例，vdsm为其传递了一个mom
+           配置文件并且mom策略文件可以设置mom的缺省行为。刚开始，vdsmd利用配置和策略文
+           件导入了mom并将其初始化。从那时起，mom通过API.py中定义好的API与vdsm进行交互
+           并且控制了运行在主机上的每个虚拟机的内存。mom实例作为vdsm守护进程内的线程运
+           行。</para>
+     <para>运行原理图如下所示：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Mom_vdsm.jpg" width="6in" />
+        </imageobject>
+     </mediaobject>
    </sect2>
    <sect2>
-     <title>REST API</title>
+     <title>基于Web的富客户端应用：</title>
+     <para>下图以一个抽象的视角表述了oVirt Web应用的内部组件：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Ovirt-ui-architecture.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>GWT（google web toolkit）:基于java语言编写的SDK，为构建web应用提供
+                       工具和接口。</para></listitem>
+       <listitem><para>GWT Platform: 基于GWT开发的MVP框架。</para></listitem>
+       <listitem><para>GWT INjection: GWT的依赖注入框架。</para></listitem>
+       <listitem><para>oVirt GWT common: oVrt 管理员门户和用户门户使用的抽象类。</para></listitem>
+       <listitem><para>oVirt UI Plugin: 允许管理员门户书写额外的扩展，接受基于javascript
+                       写的插件。</para></listitem>
+     </itemizedlist>
+     <para>下图展示了一个典型的基于GWT开发的流程：</para>     
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Gwt-development-workflow.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <para>要设计一个基于GWT的web应用，有下面的好处：</para>
+     <itemizedlist mark='opencircle'>
+          <listitem><para>将web浏览器当作应用程序的平台，通过基于JavaScript的应用程序，交付
+                          丰富的用户体验。</para></listitem>
+          <listitem><para>依赖注入和事件总线，使得松耦合架构成为可能。</para></listitem>
+          <listitem><para>Model-View-Presenter 清晰的将展现层和业务逻辑层分离。</para></listitem>
+          <listitem><para></para></listitem>
+     </itemizedlist>
+   </sect2>
+   <sect2>
+     <title>REST API,开发SDK，及命令行工具</title>
      <para> </para>
    </sect2>
    <sect2>
@@ -115,9 +172,25 @@
      <para> </para>
    </sect2>
    <sect2>
-     <title>Guest Agent</title>
-     <para> </para>
+     <title>来宾操作系统代理</title>
+     <para>来宾操作系统代理为oVirt Engine提供额外的信息，诸如获取内存的使用、IP地址、已经安装的
+           程序以及实现单点登录sso等。 </para>
+     <para>高度抽象的模块化表述:</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Guest-agent-arch.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <para>oVirt 来宾操作系统代理有以下几个注意的实现细节:</para>
+     <itemizedlist mark='opencircle'>
+          <listitem><para>基于python语言编写，跨平台，支持windows和Linux。
+                         </para></listitem>
+          <listitem><para>充分利用virtio-serial，显示来宾操作系统内部信息到vdsm再到ovirt engine。
+                          </para></listitem>
+          <listitem><para>SSO在windows的实现，不同的版本机制不一，如在windows XP中使用的gina模块，
+                          在Windows7则使用的是凭证机制。</para></listitem>
+          <listitem><para>SSO在RHEL6系列中的实现是基于PAM模块，同时支持gnome和KDE。</para></listitem>
+     </itemizedlist>
    </sect2>
    </sect1>
-
 </section>
