@@ -6,6 +6,10 @@
   <xi:include href="vdsm/vdsm_prerequisite.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_arch.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_storage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_host.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_network.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+  <xi:include href="vdsm/vdsm_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
   <xi:include href="vdsm/vdsm_example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </chapter>
 

@@ -1,2 +1,6 @@
 <!ENTITY OVDG "Open Virtualization Develop Guide">
 <!ENTITY Fedora "REHL,CentOS,Fedora等系列">
+<!ENTITY OVIRT " oVirt ">
+<!ENTITY OVIRT_STORAGE " oVirt Storage ">
+<!ENTITY MANAGER "engine">
+<!ENTITY NODE "node">

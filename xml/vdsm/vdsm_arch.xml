@@ -4,7 +4,18 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   version="5.0"
   xml:id="vdsm_arch">
-  <title></title>
-  <para></para>
+  <title>VDSM架构</title>
+  <para>先来看一张从程序组件的数据流图及其功能模块，来看VDSM在整个oVirt中占有的地位。</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/vdsm_arch.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+  <para>然后从程序内部的实现细节，来整体的看下VDSM的架构。</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/Vdsm-arch_releated.png" width="6in" />
+        </imageobject>
+     </mediaobject>
 
 </section>

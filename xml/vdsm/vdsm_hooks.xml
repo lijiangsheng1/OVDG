@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "../../docbook/dtd/docbook.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "../ovdg.ent">
+%BOOK_ENTITIES;
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="vdsm_hooks">
+  <title>VDSM Hooks介绍</title>
+  <para></para>
+  <section id="sect-VDSM_and_Hooks-VDSM">
+    <title>VDSM</title>
+    <para>
+      VDSM 被 &OVIRT; &MANAGER;用以管理 &OVIRT; &NODE;和 CentOS 主机。VDSM 管理并监控主机的存储、内存和网络资源。它还负责协调和进行虚拟机创建、数据收集、日志收和其它主机相关的管理任务。VDSM 在由 &OVIRT; &MANAGER;管理的每个主机上作为守护进程运行，并对来自客户端的 XML-RPC 请求进行应答。&OVIRT; &MANAGER;作为 VDSM 的客户端工作。
+    </para>
+  </section>
+  <section>
+     <title>VDSM Hooks运行原理</title>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/vdsm_hooks.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-VDSM_Hooks">
+    <title>VDSM Hook</title>
+    <para>
+      VDSM 能够通过 Hook 进行扩展。Hook 是当特定事件发生时在主机上运行的脚本。当被支持的事件发生时，VDSM 按照数字顺序执行位于主机上 <filename>/usr/libexec/vdsm/hooks/<replaceable>event-name</replaceable>/</filename> 目录下的可执行 Hook 脚本。按照惯例每个 Hook 脚本的文件名都以一个两位的数字开头，以确保脚本执行顺序的明确程度。您能够使用任意的编程语言编写 Hook 脚本，但在本章的例子中使用的是 Python。
+    </para>
+    <para>
+      必须注意的是，所有在主机上为某个事件定义的脚本都将被执行。如果您希望一个 Hook 只对运行在该主机上的一部分虚拟机执行，那么您必须确保 Hook 脚本本身能够根据虚拟机的<emphasis>自定义属性</emphasis>处理这个需求。
+    </para>
+    <warning>
+      <para>
+        VDSM Hook 有可能妨碍 &OVIRT; 的正常运行。VDSM Hook 中存在的漏洞将有可能造成虚拟机崩溃和数据损失。VDSM Hook 的实现必须谨慎，并且进行严格的测试。Hook API 是新近确定的，并且在以后有可能发生明显的改变。
+      </para>
+    </warning>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-Extending_VDSM_with_Hooks">
+    <title>使用 Hook 扩展 VDSM</title>
+    <para>
+      本章介绍了如何使用事件驱动的 Hook 对 VDSM 进行扩展。使用 Hook 扩展 VDSM 是实验性的技术，而且本章是为有经验的开发者准备的。请注意目前自定义的 Hook 无法被添加到 &OVIRT; &NODE;中，只能够使用预先提供的 Hook。向 Hook 脚本中传进额外的参数或者指定该脚本只对某虚拟机执行等需求，能够通过设置虚拟机的自定义属性来实现。
+    </para>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks_Supported_VDSM_Events">
+    <title>支持的 VDSM 事件</title>
+    <table>
+      <title>支持的 VDSM 事件</title>
+      <tgroup cols="2" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>
+              事件名
+            </entry>
+            <entry>
+              说明
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              before_vm_start
+            </entry>
+            <entry>
+              虚拟机启动之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_start
+            </entry>
+            <entry>
+              虚拟机启动之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vm_cont
+            </entry>
+            <entry>
+              虚拟机继续运行之前（从暂停状态恢复）
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_cont
+            </entry>
+            <entry>
+              虚拟机继续运行之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vm_pause
+            </entry>
+            <entry>
+              虚拟机暂停之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_pause
+            </entry>
+            <entry>
+              虚拟机暂停之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vm_hibernate
+            </entry>
+            <entry>
+              虚拟机休眠之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_hibernate
+            </entry>
+            <entry>
+              虚拟机休眠之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vm_dehibernate
+            </entry>
+            <entry>
+              虚拟机从休眠状态恢复之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_dehibernate
+            </entry>
+            <entry>
+              虚拟机从休眠状态恢复之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vm_migrate_source
+            </entry>
+            <entry>
+              虚拟机迁移之前，在发生迁移的源主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_migrate_source
+            </entry>
+            <entry>
+              虚拟机迁移之后，在发生迁移的源主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vm_migrate_destination
+            </entry>
+            <entry>
+              虚拟机迁移之前，在发生迁移的目标主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_migrate_destination
+            </entry>
+            <entry>
+              虚拟机迁移之后，在发生迁移的目标主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vm_destroy
+            </entry>
+            <entry>
+              虚拟机销毁之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_vdsm_start
+            </entry>
+            <entry>
+              VDSM 在主机上启动之前。<emphasis>before_vm_start</emphasis> Hook 将使用 root 用户运行，并且不从 VDSM 进程中继承运行环境。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_vdsm_stop
+            </entry>
+            <entry>
+              VDSM 在主机上停止之后。<emphasis>after_vdsm_stop</emphasis> Hook 将使用 root 用户运行，并且不从 VDSM 进程中继承运行环境。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_nic_hotplug
+            </entry>
+            <entry>
+              虚拟机热添加网卡之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_nic_hotplug
+            </entry>
+            <entry>
+              虚拟机热添加网卡之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_nic_hotunplug
+            </entry>
+            <entry>
+              虚拟机热删除网卡之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_nic_hotunplug
+            </entry>
+            <entry>
+              虚拟机热删除网卡之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_nic_hotplug_fail
+            </entry>
+            <entry>
+              虚拟机热添加网卡失败之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_nic_hotunplug_faile
+            </entry>
+            <entry>
+              虚拟机热删除网卡失败之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_disk_hotplug
+            </entry>
+            <entry>
+              虚拟机热添加磁盘之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_disk_hotplug
+            </entry>
+            <entry>
+              虚拟机热添加磁盘之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_disk_hotunplug
+            </entry>
+            <entry>
+              虚拟机热删除磁盘之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_disk_hotunplug
+            </entry>
+            <entry>
+              虚拟机热删除磁盘之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_disk_hotplug_fail
+            </entry>
+            <entry>
+              虚拟机热添加磁盘失败之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_disk_hotunplug_fail
+            </entry>
+            <entry>
+              虚拟机热删除磁盘失败之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_device_create
+            </entry>
+            <entry>
+              虚拟机网卡设备创建之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_device_create
+            </entry>
+            <entry>
+              虚拟机网卡设备创建之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_update_device
+            </entry>
+            <entry>
+              虚拟机网卡设备更新之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_update_device
+            </entry>
+            <entry>
+              虚拟机网卡设备更新之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_device_destroy
+            </entry>
+            <entry>
+              虚拟机网卡设备销毁之前
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_device_destroy
+            </entry>
+            <entry>
+              虚拟机网卡设备销毁之后
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_device_migrate_destination
+            </entry>
+            <entry>
+              设备迁移之前，在发生迁移的目标主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_device_migrate_destination
+            </entry>
+            <entry>
+              设备迁移之后，在发生迁移的目标主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              before_device_migrate_source
+            </entry>
+            <entry>
+              设备迁移之前，在发生迁移的源主机上运行。
+            </entry>
+          </row>
+          <row>
+            <entry>
+              after_device_migrate_source
+            </entry>
+            <entry>
+              设备迁移之后，在发生迁移的源主机上运行。
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-VDSM_Hook_Environment">
+    <title>VDSM Hook 运行环境</title>
+    <para>
+      大多数的的 Hook 脚本使用 <emphasis>vdsm</emphasis> 用户运行并且从 VDSM 进程中继承运行环境。有两个例外是分别由 <emphasis>before_vdsm_start</emphasis> 和 <emphasis>after_vdsm_stop</emphasis> 事件触发执行的 Hook 脚本。由这两个事件触发执行的 Hook 脚本将使用 <emphasis>root</emphasis> 用户运行并且不从 VDSM 进程中继承运行环境。
+    </para>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-VDSM_Hook_Domain_XML_Object">
+    <title>VDSM Hook Domain XML 对象</title>
+    <para>
+      Hook 脚本开始执行之后，<emphasis>_hook_domxml</emphasis> 变量将会被添加至运行环境中。该变量存放了表示对应的虚拟机的 libvirt domain XML 文件的路径。下面列出的几个 Hook 是这个规则的例外。
+    </para>
+    <para>
+      对于以下列出的事件所触发执行的 Hook 脚本，<emphasis>_hook_domxml</emphasis> 变量存放的路径中的文件包含的是虚拟机网卡的 XML 表示而不是虚拟机的 XML 表示：
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>*_nic_hotplug*</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>*_nic_hotunplug*</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>*_update_device</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>*_device_create</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>*_device_destroy</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>*_device_migrate_*</emphasis>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <important>
+      <para>
+        <emphasis>before_migration_destination</emphasis> 和 <emphasis>before_vm_dehibernate</emphasis> 两个事件所触发执行的 Hook 脚本目前都是从源主机上获得 libvirt domain 的 XML。在目标主机上的 XML 可能有一些不同之处。
+      </para>
+    </important>
+    <para>
+      VDSM 使用 libvirt domain XML 格式定义虚拟机。关于 libvirt domain XML 格式的详细信息能够从<ulink url="http://libvirt.org/formatdomain.html"/>中获得。虚拟机的 UUID 能够从 domain XML 中获得，也可以通过读取系统环境变量 <emphasis>vmId</emphasis> 获得。
+    </para>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-Defining_Custom_Properties">
+    <title>定义自定义属性</title>
+    <para>
+      &OVIRT; &MANAGER;接受并将其传至自定义 Hook 脚本的自定义属性，是通过 <command>engine-config</command> 命令进行定义的。在安装了 &OVIRT; &MANAGER;的主机上使用 <emphasis>root</emphasis> 用户运行此命令。
+    </para>
+    <para>
+      <emphasis>UserDefinedVMProperties</emphasis> 和 <emphasis>CustomDeviceProperties</emphasis> 配置键用以存放支持的自定义属性名称。定义了每个自定义属性的合法输入值的正则表达式也存放在这些配置键中。
+    </para>
+    <para>
+      多个自定义属性之间使用分号分隔。请注意当设置配置键时，其包含的已存在的值将会被覆盖。当需要将新的自定义属性添加到原有的自定义属性列表之中时，命令中必须包含所有用以设置配置键的值的自定义属性。
+    </para>
+    <para>
+      一旦配置键的值被更新，<emphasis>ovirt-engine</emphasis> 服务必须重启以使得新的自定义属性生效。
+    </para>
+    <example>
+      <title> 虚拟机属性 - 定义 <replaceable>smartcard</replaceable> 自定义属性</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            使用以下命令检查已存在的使用 <emphasis>UserDefinedVMProperties</emphasis> 配置键定义的自定义属性：
+          </para>
+          <screen>
+# engine-config -g UserDefinedVMProperties
+          </screen>
+          <para>
+            如下面的输出所示，自定义属性 <emphasis><replaceable>memory</replaceable></emphasis> 已经被定义了。正则表达式 <emphasis>^[0-9]+$</emphasis> 确保了该自定义属性的值只能够包含数字。
+          </para>
+          <screen>
+# engine-config -g UserDefinedVMProperties
+UserDefinedVMProperties: version: 3.0
+UserDefinedVMProperties: version: 3.1
+UserDefinedVMProperties: version: 3.2
+UserDefinedVMProperties: version: 3.3
+UserDefinedVMProperties : memory=^[0-9]+$ version: 3.2
+          </screen>
+        </listitem>
+        <listitem>
+          <para>
+            由于 <emphasis><replaceable>memory</replaceable></emphasis> 自定义属性已经在 <emphasis>UserDefinedVMProperties</emphasis> 配置键中定义，新的自定义属性必须被添加到其之后。新增的自定义属性 <emphasis><replaceable>smartcard</replaceable></emphasis> 将被添加到配置键的值中。该自定义属性将接受值为 <emphasis>true</emphasis> 或者 <emphasis>false</emphasis> 的输入。
+          </para>
+          <screen>
+# engine-config -s UserDefinedVMProperties='memory=^[0-9]+$;smartcard=^(true|false)$' --cver=3.2
+          </screen>
+        </listitem>
+        <listitem>
+          <para>
+            验证使用 <emphasis>UserDefinedVMProperties</emphasis> 配置键定义的自定义属性被正确地更新了。
+          </para>
+          <screen>
+# engine-config -g UserDefinedVMProperties
+UserDefinedVMProperties: version: 3.0
+UserDefinedVMProperties: version: 3.1
+UserDefinedVMProperties: version: 3.2
+UserDefinedVMProperties: version: 3.3
+UserDefinedVMProperties : memory=^[0-9]+$;smartcard=^(true|false)$ version: 3.2
+          </screen>
+        </listitem>
+        <listitem>
+          <para>
+            最后，<emphasis>ovirt-engine</emphasis> 服务必须重启以使得配置的改动生效。
+          </para>
+          <screen>
+# service ovirt-engine restart
+          </screen>
+        </listitem>
+      </orderedlist>
+    </example>
+    <example>
+      <title> 虚拟机属性 - 定义 <replaceable>interface</replaceable> 自定义属性</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            使用以下命令检查已存在的使用 <emphasis>CustomDeviceProperties</emphasis> 配置键定义的自定义属性：
+          </para>
+          <screen>
+# engine-config -g CustomDeviceProperties
+          </screen>
+          <para>
+            如下面的输出所示，没有已被定义的自定义属性。
+          </para>
+          <screen>
+# engine-config -g CustomDeviceProperties
+CustomDeviceProperties: version: 3.0
+CustomDeviceProperties: version: 3.1
+CustomDeviceProperties: version: 3.2
+CustomDeviceProperties: version: 3.3
+          </screen>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis>interface</emphasis> 自定义属性并不存在，所以可以直接被添加。在这个例子中，子属性<emphasis>speed</emphasis> 的有效值被设置为由一到五位数的一个范围，而子属性 <emphasis>duplex</emphasis> 的有效值被设置为 <emphasis>full</emphasis> 或者 <emphasis>half</emphasis>。
+          </para>
+          <screen>
+# engine-config -s CustomDeviceProperties="{type=interface;prop={speed=^([0-9]{1,5})$;duplex=^(full|half)$}}" --cver=3.3
+          </screen>
+        </listitem>
+        <listitem>
+          <para>
+            验证使用 <emphasis>CustomDeviceProperties</emphasis> 配置键定义的自定义属性被正确地更新了。
+          </para>
+          <screen>
+# engine-config -g CustomDeviceProperties
+UserDefinedVMProperties: version: 3.0
+UserDefinedVMProperties: version: 3.1
+UserDefinedVMProperties: version: 3.2
+UserDefinedVMProperties : {type=interface;prop={speed=^([0-9]{1,5})$;duplex=^(full|half)$}} version: 3.3
+          </screen>
+        </listitem>
+        <listitem>
+          <para>
+            最后，<emphasis>ovirt-engine</emphasis> 服务必须重启以使得配置的改动生效。
+          </para>
+          <screen>
+# service ovirt-engine restart
+          </screen>
+        </listitem>
+      </orderedlist>
+    </example>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-Setting_Custom_Device_Properties">
+    <title>设置自定义设备属性的值</title>
+    <para>
+      一旦在 &OVIRT; &MANAGER;中使用了 <emphasis>CustomDeviceProperties</emphasis> 定义了自定义设备属性之后，您就可以在虚拟网卡设备上设置这些属性的值。这些属性的值可以在管理员门户的<emphasis>网络</emphasis>标签下的<emphasis>配置集</emphasis>子标签下的<emphasis>虚拟机接口配置集</emphasis>窗口中进行设置。
+    </para>
+    <para>
+      <emphasis>虚拟机接口配置集</emphasis>窗口提供了一个下拉菜单供您选择已定义的自定义选项。一旦您选择了一个自定义属性的键，将会出现一个文本框以供您输入对应于该键的值。通过 + 按钮增加和通过 - 按钮删除一个键值对。
+    </para>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-Setting_Virtual_Machine_Custom_Properties">
+    <title>设置虚拟机自定义属性的值</title>
+    <para>
+      <emphasis>前提需求：</emphasis>
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="sect-VDSM_and_Hooks-Defining_Custom_Properties"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      一旦在 &OVIRT; &MANAGER;中使用了 <emphasis>UserDefinedVMProperties</emphasis> 定义了虚拟机的自定义属性之后，您就可以在虚拟机上设置这些属性的值。这些属性的值可以在管理员门户的<emphasis>新建虚拟机</emphasis>和<emphasis>编辑虚拟机</emphasis>窗口中进行设置。
+    </para>
+    <para>
+      您还可以在<emphasis>运行虚拟机</emphasis>对话框中设置虚拟机自定义属性的值。在<emphasis>运行虚拟机</emphasis>对话框中设置的自定义属性将只会在虚拟机关机之前有效。
+    </para>
+    <para>
+      <emphasis>自定义属性</emphasis>标签提供了一个下拉菜单供您选择已定义的虚拟机自定义选项。一旦您选择了一个自定义属性的键，将会出现一个文本框以供您输入对应于该键的值。通过 + 按钮增加和通过 - 按钮删除一个键值对。
+    </para>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-Evaluating_Virtual_Machine_Custom_Properties_in_a_VDSM_Hook">
+    <title>在 VDSM Hook 中使用虚拟机自定义属性</title>
+    <para>
+      <emphasis>前提需求：</emphasis>
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="sect-VDSM_and_Hooks-Defining_Custom_Properties"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="sect-VDSM_and_Hooks-Setting_Virtual_Machine_Custom_Properties"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      在<emphasis>自定义属性</emphasis>标签下为虚拟机设置的每个键值对都将在调用 Hook 脚本时被作为环境变量添加进运行环境中。虽然用以验证<emphasis>自定义属性</emphasis>标签下输入的值的正则表达式提供了部分保护功能，您还是必须确保您的脚本同样验证了这些值的输入与它们的预期值相匹配。
+    </para>
+    <example>
+      <title>使用自定义属性</title>
+      <para>
+        下面简短的 Python 例子检查了自定义属性 <emphasis><replaceable>key1</replaceable></emphasis> 是否存在。如果该自定义属性被设置则其值将被打印到标准错误输出中。如果该自定义属性未被设置，则不会进行任何操作。
+      </para>
+      <programlisting language="Python">
+#!/usr/bin/python
+
+import os
+import sys
+
+if os.environ.has_key('key1'):
+    sys.stderr.write('key1 value was : %s\n' % os.environ['key1'])
+else:
+    sys.exit(0)
+      </programlisting>
+    </example>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-Using_the_VDSM_Hooking_Module">
+    <title>使用 VDSM Hooking 模块</title>
+    <para>
+      VDSM 包含了一个名为 hooking 的 Python 模块，该模块为 VDSM Hook 脚本提供了帮助函数。该模块作为一个例子提供，并且只对使用 Python 编写的 VDSM Hook 脚本有意义。
+    </para>
+    <para>
+      hooking 模块支持将虚拟机的 libvirt XML 读取到一个 DOM 对象中。Hook 脚本能够使用 Python 自带的 <emphasis>xml.dom</emphasis> 库（<ulink url="http://docs.python.org/release/2.6/library/xml.dom.html"/>）来对该对象进行操作。
+    </para>
+    <para>
+      被修改过的对象可以使用 hooking 模块的函数保存回至 libvirt XML 中。该 hooking 模块提供了一下的函数以支持 Hook 开发：
+    </para>
+    <table>
+      <title>hooking 模块中的函数</title>
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>
+              函数名
+            </entry>
+            <entry>
+              参数
+            </entry>
+            <entry>
+              功能说明
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <emphasis>tobool</emphasis>
+            </entry>
+            <entry>
+              字符串
+            </entry>
+            <entry>
+              将字符串“true”或者“false”转换为布尔值
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <emphasis>read_domxml</emphasis>
+            </entry>
+            <entry>
+              -
+            </entry>
+            <entry>
+              将虚拟机的 libvirt XML 读取到一个 DOM 对象中
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <emphasis>write_domxml</emphasis>
+            </entry>
+            <entry>
+              DOM 对象
+            </entry>
+            <entry>
+              写入一个 DOM 对象到虚拟机的 libvirt XML
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-VDSM_Hook_Execution">
+    <title>VDSM Hook 的执行</title>
+    <para>
+      <emphasis>before_vm_start</emphasis> 脚本能够编辑 libvirt domain XML 以在到达 libvirt 之前修改 VDSM 关于一个虚拟机的定义。这么做的时候必须十分谨慎。Hook 脚本有可能妨碍 VDSM 的正常工作，存在问题的脚本将有可能使得 &OVIRT; 虚拟化环境不正常。尤其需要注意的是，请确保您不会改变该虚拟机的 UUID，也不要在没有足够的相关背景知识的情况下尝试在脚本中删除虚拟机上的一个设备。
+    </para>
+    <para>
+      <emphasis>before_vdsm_start</emphasis> 和 <emphasis>after_vdsm_stop</emphasis> Hook 脚本都是以 <emphasis>root</emphasis> 用户运行的。其它执行过程中需要使用 <emphasis>root</emphasis> 权限的脚本则必须被添加到能够使用 <command>sudo</command> 命令提升权限执行的列表之中。为达到这个目地，<filename>/etc/sudoers</filename> 文件必须被更新以允许 <emphasis>vdsm</emphasis> 用户不需要重新输入密码就能够使用 <command>sudo</command> 命令。这些操作是必需的，因为 Hook 脚本是非交互式地执行。
+    </para>
+    <example>
+      <title>为 VDSM Hook 配置 sudo 命令</title>
+      <para>
+        在这个例子中我们将会修改 <command>sudo</command> 命令的配置以允许 <emphasis>vdsm</emphasis> 用户以 <emphasis>root</emphasis> 用户权限执行 <command>/bin/chown</command>。
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            使用 <emphasis>root</emphasis> 账户登录到虚拟化主机中。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            在文本编辑器中打开 <filename>/etc/sudoers</filename> 文件。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            添加如下一行到该文件中：
+          </para>
+          <screen>
+vdsm ALL=(ALL) NOPASSWD: /bin/chown
+          </screen>
+          <para>
+            这将指定 <emphasis>vdsm</emphasis> 用户能够以 <emphasis>root</emphasis> 用户权限执行 <command>/bin/chown</command> 命令。其中的 <emphasis><replaceable>NOPASSWD</replaceable></emphasis> 参数表示用户在使用 <command>sudo</command> 的时候将不会被提示需要输入他们的密码。
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        一旦修改了该配置，VDSM Hook 将能够使用 <command>sudo</command> 以 <emphasis>root</emphasis> 用户权限执行 <command>/bin/chown</command>。下面所示的 Python 代码使用了 <command>sudo</command> 以 <emphasis>root</emphasis> 用户权限对文件 <filename>/my_file</filename> 执行了 <command>/bin/chown</command>。
+      </para>
+      <programlisting language="Python">
+retcode = subprocess.call( ["/usr/bin/sudo", "/bin/chown", "root", "/my_file"])
+      </programlisting>
+    </example>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-VDSM_Hook_Return_Codes">
+    <title>VDSM Hook 返回值代码</title>
+    <para>
+      Hook 脚本必须返回下表中列出的返回值代码中的一个。该返回值将会决定 VDSM 是否继续执行其它的 Hook 脚本。
+    </para>
+    <table>
+      <title>Hook 返回值代码</title>
+      <tgroup cols="2" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>
+              代码
+            </entry>
+            <entry>
+              说明
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              0
+            </entry>
+            <entry>
+              Hook 脚本成功结束
+            </entry>
+          </row>
+          <row>
+            <entry>
+              1
+            </entry>
+            <entry>
+              Hook 脚本执行失败，其它 Hook 脚本必须被继续执行
+            </entry>
+          </row>
+          <row>
+            <entry>
+              2
+            </entry>
+            <entry>
+              Hook 脚本执行失败，其它 Hook 脚本将不再被执行
+            </entry>
+          </row>
+          <row>
+            <entry>
+              &gt;2
+            </entry>
+            <entry>
+              保留值，目前未使用
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section id="sect-VDSM_and_Hooks-VDSM_Hook_Examples">
+    <title>VDSM Hook 例子</title>
+    <para>
+      您必须确保不管从哪个来源安装到您的系统中的 Hook 脚本，都针对您的环境进行过全面的测试。
+    </para>
+    <example>
+      <title>使用主机的 USB 设备</title>
+      <formalpara>
+        <title>目标：</title>
+        <para>
+          此 Hook 脚本将根据 <emphasis>hostusb</emphasis> 自定义属性的值来使得虚拟机能够使用主机上的 USB 设备。如果该自定义选项的值未被设置，则不会执行任何操作。
+          <important>
+            <para>
+              使用此 Hook 要求必须把虚拟机固定在单独一台主机上运行，该虚拟机的迁移操作都会失败。
+            </para>
+          </important>
+        </para>
+      </formalpara>
+      <formalpara>
+        <title>配置字符串：</title>
+        <para>
+          <screen>
+hostusb=0x[\da-fA-F]{4}:0x[\da-fA-F]{4}(&amp;0x[\da-fA-F]{4}:0x[\da-fA-F]{4})*
+          </screen>
+          上面使用的正则表达式使得 <emphasis>hostusb</emphasis> 这个自定义属性能够接受一个或者多个由“:”分隔的两个四位十六进制数（例如 0x1234:0xbeef）的组合，如果是多个的话则它们之间由“&amp;”分隔。其中每个组合表示一个主机上的 USB 设备，前面一个四位十六进制数表示厂商的 ID，后一个十六进制数表示产品 ID（例如刚才的例子，0x1234 表示厂商，0xbeef 表示产品）。
+        </para>
+      </formalpara>
+      <formalpara>
+        <title>脚本：</title>
+        <para>
+          <emphasis>/usr/libexec/vdsm/hooks/before_vm_start/50_hostusb</emphasis>
+          <programlisting language="Python">
+<![CDATA[
+#!/usr/bin/python
+
+import re
+import os
+import sys
+import grp
+import pwd
+import traceback
+
+import hooking
+
+'''
+host usb hook
+=============
+
+          !!! Disclaimer !!!
+*******************************************
+The host side usb support wasn't thoroughly
+tests in kvm!
+*******************************************
+
+add hosts usb device/s to VM:
+
+<hostdev mode='subsystem' type='usb'>
+    <source>
+        <vendor id='0x1234'/>
+        <product id='0xbeef'/>
+    </source>
+</hostdev>
+
+syntax:
+    hostusb=0x1234:0xbeef&0x2222:0xabaa
+    i.e.
+    hostusb=VendorId:ProductId (can add more then one with '&' separator)
+
+Note:
+    The VM must be pinned to host and this hook will
+    fail any migration attempt.
+'''
+
+HOOK_HOSTUSB_PATH = '/var/run/vdsm/hooks/hostusb-permissions'
+
+
+def log_dev_owner(devpath, user, group):
+    entry = devpath + ":" + str(user) + ":" + str(group)
+
+    if not os.path.isdir(os.path.dirname(HOOK_HOSTUSB_PATH)):
+        os.mkdir(os.path.dirname(HOOK_HOSTUSB_PATH))
+
+    if os.path.isfile(HOOK_HOSTUSB_PATH):
+        f = file(HOOK_HOSTUSB_PATH, 'r')
+        for line in f:
+            if entry == line:
+                f.close()
+                return
+
+    f = file(HOOK_HOSTUSB_PATH, 'a')
+    f.writelines(entry)
+    f.close()
+
+
+def chown(vendorid, productid):
+
+    # remove the 0x from the vendor and product id
+    devid = vendorid[2:] + ':' + productid[2:]
+    command = ['lsusb', '-d', devid]
+    retcode, out, err = hooking.execCmd(command, sudo=False, raw=True)
+    if retcode != 0:
+        sys.stderr.write('hostusb: cannot find usb device: %s\n' % devid)
+        sys.exit(2)
+
+    # find the device path:
+    # /dev/bus/usb/xxx/xxx
+    devpath = '/dev/bus/usb/' + out[4:7] + '/' + out[15:18]
+    stat = os.stat(devpath)
+
+    group = grp.getgrnam('qemu')
+    gid = group.gr_gid
+    user = pwd.getpwnam('qemu')
+    uid = user.pw_uid
+
+    # we don't use os.chown because we need sudo
+    owner = str(uid) + ':' + str(gid)
+    command = ['/bin/chown', owner, devpath]
+    retcode, out, err = hooking.execCmd(command, sudo=True, raw=True)
+    if retcode != 0:
+        sys.stderr.write('hostusb: error chown %s to %s, err = %s\n' %
+                         (devpath, owner, err))
+        sys.exit(2)
+
+    log_dev_owner(devpath, stat.st_uid, stat.st_gid)
+
+
+def create_usb_device(domxml, vendorid, productid):
+    hostdev = domxml.createElement('hostdev')
+    hostdev.setAttribute('mode', 'subsystem')
+    hostdev.setAttribute('type', 'usb')
+
+    source = domxml.createElement('source')
+    hostdev.appendChild(source)
+
+    vendor = domxml.createElement('vendor')
+    vendor.setAttribute('id', vendorid)
+    source.appendChild(vendor)
+
+    product = domxml.createElement('product')
+    product.setAttribute('id', productid)
+    source.appendChild(product)
+
+    return hostdev
+
+if 'hostusb' in os.environ:
+    try:
+        regex = re.compile('^0x[\d,A-F,a-f]{4}$')
+        domxml = hooking.read_domxml()
+        devices = domxml.getElementsByTagName('devices')[0]
+
+        for usb in os.environ['hostusb'].split('&'):
+            vendorid, productid = usb.split(':')
+            if len(regex.findall(vendorid)) != 1 or \
+                    len(regex.findall(productid)) != 1:
+                sys.stderr.write('hostusb: bad input, expected 0x0000 format '
+                                 'for vendor and product id, input: %s:%s\n' %
+                                 (vendorid, productid))
+                sys.exit(2)
+
+            hostdev = create_usb_device(domxml, vendorid, productid)
+            devices.appendChild(hostdev)
+            chown(vendorid, productid)
+
+        hooking.write_domxml(domxml)
+    except:
+        sys.stderr.write('hostusb: [unexpected error]: %s\n' %
+                         traceback.format_exc())
+        sys.exit(2)
+]]>
+          </programlisting>
+        </para>
+      </formalpara>
+    </example>
+  </section>
+
+</section>
