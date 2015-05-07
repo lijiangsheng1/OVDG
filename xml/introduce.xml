@@ -29,5 +29,14 @@
          <listitem><para>个人知识能力有限，不能做到每个项目都细致。</para></listitem>
          <listitem><para>用时间换取空间的常见做法，就是本书的真正完成时间基本没戏。</para></listitem>
      </orderedlist>
+  <warning>
+     <para>本书的题目是：开发指南，按照常理，开发指南有两种:</para>
+     <orderedlist numeration="arabic">
+         <listitem><para>参与到这个项目中。</para></listitem>
+         <listitem><para>基于此项目抛出的API,进而开发或整合用户自己的应用。</para></listitem>
+     </orderedlist>
+     <para>显然本书是属于第一种。</para>
+     <!-- TODO <para>如果可以的话，附加下第二种情形也是不错的</para>-->
+  </warning>
 </chapter>
 

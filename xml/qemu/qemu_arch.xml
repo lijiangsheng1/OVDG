@@ -13,12 +13,21 @@
        <listitem><para>virtio机制，即KVM的半虚拟化实现。</para></listitem>
   </itemizedlist>
   
-<!--  <sect1>
-     <title></title>  
-     <para> </para>
-     <itemizedlist mark='opencircle'>
-       <listitem><para>......</para></listitem>
-     </itemizedlist>
+  <sect1>
+     <title>virtio机制</title>  
+     <para>我们先来看看对比的结果：相比较于QEMU模拟IO设备</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/virtio_vs_emulation.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+     <para>virtio运行机制的架构示意图：</para>
+     <mediaobject>
+        <imageobject>
+            <imagedata fileref="../media/virtio-arch.png" width="6in" />
+        </imageobject>
+     </mediaobject>
+
   </sect1>
--->
+
 </section>
