@@ -312,5 +312,6 @@ changing mode of /usr/local/bin/swift-account-audit to 755
         </listitem>
      </orderedlist>
    </sect1>
+  <xi:include href="openstack/openstack_development.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
 </chapter>
 

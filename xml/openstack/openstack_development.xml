@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="5.0"
+  xml:id="openstack_development">
+  <title>OpenStack 开发 </title>
+  <para>如果你想参与到OpenStack开发的浩浩荡荡的大军中来，那么首先你需要有以下一些知识点:
+        </para>
+    <itemizedlist mark='opencircle'>
+       <listitem><para>Python开发语言必须掌握</para></listitem>
+       <listitem><para>Linux系统管理</para></listitem>
+       <listitem><para>web开发知识，尤其是RESTful API。</para></listitem>
+       <listitem><para>熟悉git</para></listitem>
+       <listitem><para>熟悉消息队列如RabbitMQ。</para></listitem>
+       <listitem><para>熟悉关系型数据库。</para></listitem>
+       <listitem><para>了解DevOps的重要性，对puppet等配置管理有一定认识。</para></listitem>
+     </itemizedlist>
+
+<!--  <sect1>
+     <title></title>  
+     <para> </para>
+     <itemizedlist mark='opencircle'>
+       <listitem><para>......</para></listitem>
+     </itemizedlist>
+  </sect1>
+-->
+</section>
